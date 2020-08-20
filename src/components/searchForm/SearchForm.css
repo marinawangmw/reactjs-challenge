@@ -4,3 +4,14 @@
 .searchForm__input {
     padding-right: 10px !important;
 }
+
+@media screen and (max-width: 721px) {
+    .searchForm__form {
+        display:flex;
+        flex-direction: column;
+    }
+
+    .searchForm__input{
+        padding:5px !important;
+    }
+ }

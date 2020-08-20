@@ -23,9 +23,9 @@ class Body extends React.Component {
     render(){
         return (
             <div className="body">
-                <SearchForm 
-                    handleChangeName={this.handleChangeName}
-                    handleChangeType={this.handleChangeType}/>
+                    <SearchForm 
+                        handleChangeName={this.handleChangeName}
+                        handleChangeType={this.handleChangeType}/>
                 <Collection collection={this.props} />
             </div>
         );

@@ -1,19 +1,17 @@
 import React from 'react';
-import './Collection';
+import CardItem from '../card/Card';
+import './Collection.css';
 
 const Collection = ({ collection }) => {
     const { results } = collection.collection;
-    console.log(results);
     return (
         <div className='collection'>
             { 
-            results?
+            results &&
             results.map(item => 
-                (<div key={item.id}>
-                    <h1>{item.name}</h1> 
-                    <h5>{item.species}</h5>
-                </div>))
-                : console.log('vacio')
+                (
+                    <CardItem key={item.id} item={item} />
+                ))
             } 
         </div>
     );

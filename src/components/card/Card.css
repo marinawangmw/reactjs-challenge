@@ -1,0 +1,28 @@
+.card {
+    padding:10px;
+}
+
+.card__img {
+    height: 35vh;
+    width: auto;
+    padding: 10px;
+}
+
+.cardwithImage__p {
+    font-size: 20px !important;
+    padding-top: 5px;
+    font-family: 'Ubuntu Condensed', sans-serif !important;
+}
+
+.card__card:hover {
+    transition: transform 0.1s ease-in-out;
+    transform: scale(1.02) !important;
+}
+
+@media screen and (max-width: 500px) {
+    .card__img {
+        height: 40vh;
+        width: auto;
+        padding: 10px;
+    }
+ }

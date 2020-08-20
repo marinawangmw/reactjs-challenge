@@ -16,4 +16,4 @@ const Sidebar = ({ handleSelectCharacter,handleSelectLocations, handleSelectEpis
     );
 };
 
-export default Sidebar;
+export default Sidebar; 
