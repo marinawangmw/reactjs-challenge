@@ -3,16 +3,15 @@ import SidebarOption from '../sidebar-options/SidebarOption';
 import logo from '../../assets/RickAndMorty.png';
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({ handleSelectCharacter,handleSelectLocations, handleSelectEpisodes }) => {
     return (
         <div className="sidebar">
             <img className='sidebar__logo' src={logo} alt="logo" />
-            {/* <hr/> */}
             <p className="sidebar__title">Filters</p>
             <hr/>
-            <SidebarOption>Characters</SidebarOption>
-            <SidebarOption>Locations</SidebarOption>
-            <SidebarOption>Episodes</SidebarOption>
+            <SidebarOption handleClick={handleSelectCharacter}>Characters</SidebarOption>
+            <SidebarOption handleClick={handleSelectLocations}>Locations</SidebarOption>
+            <SidebarOption handleClick={handleSelectEpisodes}>Episodes</SidebarOption>
         </div>
     );
 };

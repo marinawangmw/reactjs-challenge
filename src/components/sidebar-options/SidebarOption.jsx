@@ -1,10 +1,13 @@
 import React from 'react';
+import Button from '@material-ui/core/Button'
 import './SidebarOption.css';
 
-const SidebarOption = ({ children }) => {
+const SidebarOption = ({ children, handleClick }) => {
     return (
         <div className="sidebarOption">
-            <a className="sidebarOption__link">{children.toUpperCase()}</a>
+            <Button className="sidebarOption__botton" onClick={handleClick}>
+                {children.toUpperCase()}
+            </Button>
         </div>
     );
 };

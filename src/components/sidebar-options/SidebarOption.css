@@ -1,7 +1,7 @@
 .sidebarOption {
     padding: 20px;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 25px !important;
     transition: 200ms color ease-in;
     align-items: center;
     color: #293d3d;
@@ -11,11 +11,13 @@
     text-decoration: none;
 }
 
-.sidebarOption__link:visited,
-.sidebarOption__link:hover, 
-.sidebarOption_link:active {
+.sidebarOption__botton {
+    font-size: 25px !important;
+    width: 100% !important;
+}
+
+.sidebarOption__botton:hover, 
+.sidebarOption__botton:focus{
     color: cadetblue;
     font-weight: bold;
 }
-
-
