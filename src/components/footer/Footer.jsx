@@ -2,10 +2,15 @@ import React from 'react';
 import './Footer.css';
 
 const Footer = () => {
+    const date = new Date().toLocaleDateString()
     return (
         <div className="footer">
-            <p>Marina Wang</p>
-            <p>date</p>
+            <div className="footer__name">
+                <p>Marina Wang</p>
+            </div>
+            <div className="footer__date">
+                <p>{date}</p>
+            </div>
         </div>
     );
 };

@@ -6,8 +6,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './SearchForm.css';
 
-const SearchForm = ({ handleChangeName, handleChangeType }) => {
-
+const SearchForm = ({ handleChangeName, handleChangeType, disable }) => {
     const theme = createMuiTheme({
         palette: {
           primary: {
@@ -24,6 +23,7 @@ const SearchForm = ({ handleChangeName, handleChangeType }) => {
                     <TextField className='searchForm__input' id="outlined-basic" label="Search by type" variant="outlined" onChange={handleChangeType} size="small" color='primary'/>
 
                     <IconButton
+                    disabled={!disable}
                     variant='contained' 
                     color='primary' 
                     type='submit'

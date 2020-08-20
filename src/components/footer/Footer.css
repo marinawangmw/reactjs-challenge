@@ -7,3 +7,9 @@
     display: flex;
     position:fixed;
 }
+
+.footer__name,
+.footer__date {
+    padding: 2px 20px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}

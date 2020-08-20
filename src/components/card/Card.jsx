@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import './Card.css';
 
 const CardItem = ({ item }) => {
-    console.log(item.image);
     return (
         <div className="card"> 
             <Card className="card__card">
