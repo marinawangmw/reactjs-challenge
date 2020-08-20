@@ -4,10 +4,19 @@
     width:100%;
     background-color: #f1f1f1;
     overflow-y: overlay;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .body::-webkit-scrollbar {
     display: none;
+}
+
+
+
+.body__pagination {
+    margin-bottom: 40px;
 }
 
 

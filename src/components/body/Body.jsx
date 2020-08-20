@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchForm from '../searchForm/SearchForm';
 import Collection from '../collection/Collection';
+import Pagination from '@material-ui/lab/Pagination';
 import './Body.css';
 
 class Body extends React.Component {
@@ -31,12 +32,18 @@ class Body extends React.Component {
         
         return (
             <div className="body">
-                <SearchForm 
-                    handleChangeName={this.handleChangeName}
-                    handleChangeType={this.handleChangeType}
-                    disable={this.searchButtonDisable()}/>
-                <Collection collection={this.props} />
-                {/* paginador */} 
+                <div className="body__header">
+                    <SearchForm 
+                        handleChangeName={this.handleChangeName}
+                        handleChangeType={this.handleChangeType}
+                        disable={this.searchButtonDisable()}/>
+                </div>
+                <div className="body__body">
+                    <Collection collection={this.props} />
+                </div>
+                <div className="body__pagination">
+                    <Pagination count={3} shape="rounded" size="large" />
+                </div>
             </div>
         );
     }
