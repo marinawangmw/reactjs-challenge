@@ -19,3 +19,9 @@
     color: #006699 !important;
     font-weight: bold !important;
 }
+
+@media screen and (max-width: 360px){
+    .sidebarOption__botton {
+        font-size: 15px !important;
+    }
+}
