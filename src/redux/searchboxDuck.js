@@ -5,7 +5,7 @@ import { characters, locations, episodes } from '../data';
 const initialData = {
     filterQuery: '',
     collection: [],
-    type: '',
+    tipo: '',
     name: ''
 }
 
@@ -14,6 +14,7 @@ const SET_FILTER = 'SET_FILTER';
 const SET_COLLECTION = 'SET_COLLECTION';
 const SET_NAME = 'SET_NAME';
 const SET_TYPE = 'SET_TYPE';
+const LIMPIAR_INPUT = 'LIMPIAR_INPUT';
 
 // Estados de get collection from api
 
@@ -23,12 +24,16 @@ const reducer = ( state=initialData, action ) => {
         case SET_NAME:
             return { ...state, name: action.payload}
         case SET_TYPE:
-            return { ...state, type: action.payload}
+            return { ...state, tipo: action.payload}
         
         case SET_FILTER:
             return {...state, filterQuery: action.payload}
         case SET_COLLECTION:
             return {...state, collection: action.payload}
+
+        case LIMPIAR_INPUT:
+            return {...state, tipo:'', name:'' }
+            
         default:
             return action
     }
@@ -42,6 +47,7 @@ export const setFilterCharactersAction = () => (dispatch, getState) => {
         // query character
         payload: 'characters'
     })
+    limpiarInputAction()(dispatch, getState);
     // DESPUES BORRAR
     getCollectionAction(characters) (dispatch, getState)
 }
@@ -52,6 +58,7 @@ export const setFilterLocationsAction = () => (dispatch, getState) => {
         // query locations
         payload: 'locations'
     })
+    limpiarInputAction()(dispatch, getState);
     // DESPUES BORRAR
     getCollectionAction(locations) (dispatch, getState)
 }
@@ -62,13 +69,14 @@ export const setFilterEpisodesAction = () => (dispatch, getState) => {
         // query episodes
         payload: 'episodes'
     })
+    limpiarInputAction()(dispatch, getState);
     // DESPUES BORRAR
     getCollectionAction(episodes) (dispatch, getState)
 }
 
 // cuando toca boton buscar
 export const getCollectionAction = (item) => (dispatch, getState) => {
-    const { filterQuery } = getState().searchbox;
+    //const { filterQuery } = getState().searchbox;
     // manda la query a la api y obtiene los datos
     const items = item.results
     dispatch({
@@ -86,11 +94,17 @@ export const setInputNameAction = (name) => (dispatch, getState) => {
     })
 } 
 
-export const setInputTypeAction = (type) => (dispatch, getState) => {
+export const setInputTypeAction = (tipo) => (dispatch, getState) => {
     dispatch({
         type: SET_TYPE,
-        payload: type
+        payload: tipo
     })
 } 
+
+export const limpiarInputAction =() => (dispatch, getState) => {
+    dispatch({
+        type: LIMPIAR_INPUT
+    })
+}
 
 export default reducer;

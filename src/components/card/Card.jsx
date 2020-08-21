@@ -12,7 +12,7 @@ const CardItem = ({ item }) => {
                     {
                     item.image?
                         <div className="card__withImage">
-                            <img className="card__img" src={item.image} alt="card image"/>
+                            <img className="card__img" src={item.image} alt="foto card"/>
                             <Typography className="cardwithImage__p" variant="body2" component="p">
                                 {item.name}
                             </Typography>
