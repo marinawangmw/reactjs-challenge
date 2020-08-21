@@ -1,25 +1,27 @@
 import React from 'react';
 import CardItem from '../card/Card';
-import { connect } from 'react-redux';
 import './Collection.css';
 
-const Collection = ({ collection }) => {
+const Collection = ({ collection, small }) => {
     return (
         <div className='collection'>
             { 
             collection &&
-            collection.map(({id, ...otherProps}) => 
-                (
-                    <CardItem key={id} {...otherProps} />
+            collection
+                .filter((item,idx) => {
+                    if(small){
+                        return idx < 5
+                    }
+                    return item
+                })
+                .map(item => (
+                    <CardItem key={item.id} item={item} small={small}/>
                 ))
             } 
         </div>
     );
 };
 
-function mapStateToProps(state) {
-    return {
-        collection: state.searchbox.collection
-}}
 
-export default connect(mapStateToProps)(Collection);
+
+export default Collection;

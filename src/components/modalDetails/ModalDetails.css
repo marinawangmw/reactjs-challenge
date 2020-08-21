@@ -1,0 +1,17 @@
+.cardwithImage__name {
+    display: grid !important;
+    align-items: center !important;
+    justify-items: center !important;
+}
+
+.modalDetails {
+    display: grid;
+}
+
+.modalDetails__subtitle{
+    font-weight: bold;
+}
+
+.modalDetails__moreInfo {
+    padding-top: 10px;
+}

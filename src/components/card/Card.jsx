@@ -6,13 +6,15 @@ import Modal from '@material-ui/core/Modal';
 import ModalDetails from '../modalDetails/ModalDetails';
 import './Card.css';
 
-const CardItem = ({ name, image, ...otherProps }) => {
-    console.log(otherProps.dimension, otherProps.episode)
-
+const CardItem = ({ item, small }) => {
+    const { name, image, dimension, episode } = item;
     const [open, setOpen] = React.useState(false);
 
     const handleOpen = () => {
-        setOpen(true);
+        if(!small){
+            setOpen(true)
+            return
+        };
       };
     
     const handleClose = () => {
@@ -20,12 +22,12 @@ const CardItem = ({ name, image, ...otherProps }) => {
     };
 
     return (
-        <div className="card"> 
+        <div className='card'> 
             <Card className="card__card">
                 <CardContent onClick={handleOpen}>
                 {
                 image?
-                    <div className="card__withImage">
+                    <div className={`${small && 'small'} "card__withImage"`}>
                         <img className="card__img" src={image} alt="foto card"/>
                         <Typography className="cardwithImage__p" variant="body2" component="p">
                             {name}
@@ -37,21 +39,22 @@ const CardItem = ({ name, image, ...otherProps }) => {
                             {name}
                         </Typography>
                         <Typography variant="body2" component="p">
-                           {otherProps.dimension? otherProps.dimension :
-                            otherProps.episode && otherProps.episode}
+                           {dimension? dimension 
+                           :episode && episode}
                         </Typography>
                     </div>
                 }
                 
                 </CardContent>
             </Card>
+
             <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             >
-                <ModalDetails />
+                <ModalDetails item={item}/>
             </Modal>
 
             

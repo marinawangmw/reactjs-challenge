@@ -19,6 +19,18 @@
     transform: scale(1.02) !important;
 }
 
+.small > img {
+    height: 15vh;
+    width: auto;
+}
+
+.small > .cardwithImage__p {
+    font-size: 15px !important;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
  @media screen and (max-width: 360px) {
     .card__img {
         height: auto;

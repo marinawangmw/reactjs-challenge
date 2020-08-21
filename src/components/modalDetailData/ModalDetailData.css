@@ -1,0 +1,7 @@
+.modalDetailData__subtitle {
+    font-weight: bold;
+}
+
+.modalDetailData {
+    display: flex;
+}

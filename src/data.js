@@ -55,19 +55,23 @@ export const locations = {
             residents: [
               {
                 id: 38,
-                name: "Beth Smith"
+                name: "Beth Smith",
+                image: "https://rickandmortyapi.com/api/character/avatar/38.jpeg"
               },
               {
                 id: 45,
-                name: "Bill"
+                name: "Bill",
+                image: "https://rickandmortyapi.com/api/character/avatar/45.jpeg"
               },
               {
                 id: 71,
-                name: "Conroy"
+                name: "Conroy",
+                image: "https://rickandmortyapi.com/api/character/avatar/71.jpeg"
               },
               {
                 id: 82,
-                name: "Cronenberg Rick"
+                name: "Cronenberg Rick",
+                image: "https://rickandmortyapi.com/api/character/avatar/82.jpeg"
               }
             ]
         },{
@@ -78,7 +82,8 @@ export const locations = {
             residents: [
                 {
                 id: 6,
-                name: "Abadango Cluster Princess"
+                name: "Abadango Cluster Princess",
+                image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg"
                 }
             ]
         },
@@ -90,7 +95,8 @@ export const locations = {
             residents: [
                 {
                 id: 8,
-                name: "Adjudicator Rick"
+                name: "Adjudicator Rick",
+                image: "https://rickandmortyapi.com/api/character/avatar/8.jpeg"
                 }
             ]
         }
@@ -106,7 +112,8 @@ export const episodes = {
           episode: "S01E01",
           characters: [
             {
-              "name": "Rick Sanchez"
+              name: "Rick Sanchez",
+              image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
             }
           ]
         },
@@ -117,13 +124,16 @@ export const episodes = {
             episode: "S01E02",
             characters: [
               {
-                name: "Rick Sanchez"
+                name: "Rick Sanchez",
+                image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
               },
               {
-                name: "Morty Smith"
+                name: "Morty Smith",
+                image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
               },
               {
-                name: "Beth Smith"
+                name: "Beth Smith",
+                image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
               }
             ]
         }

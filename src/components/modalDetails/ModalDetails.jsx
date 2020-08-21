@@ -1,5 +1,9 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import ModalDetailData from '../modalDetailData/ModalDetailData';
+import Collection from '../collection/Collection';
 import { makeStyles } from '@material-ui/core/styles';
+import './ModalDetails.css'
 
 function getModalStyle() {
   const top = 50;
@@ -15,7 +19,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 400,
+    width: 'auto',
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -23,17 +27,59 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalDetails() {
-  const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
+export default function ModalDetails({ item }) {
+
+  const { name, 
+          image, 
+          type, 
+          gender, 
+          species, 
+          dimension, 
+          residents, 
+          episode, 
+          characters, 
+          created } = item
+
+  const classes = useStyles()
   const [modalStyle] = React.useState(getModalStyle);
   
   return (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p>
+    <div style={modalStyle} className={`${classes.paper} modalDetails`} >
+
+      { 
+        image &&
+          <img className="modalDetails__img" src={image} alt="foto detail"/>
+      }
+
+      <Typography className="modalDetails__name" variant="h5" component="h6">
+          {name}
+      </Typography>
+
+      <div className="modalDetails__data">
+
+        <ModalDetailData data={episode? created: type}>
+          {created? 'Release date:': 'Type:' }
+        </ModalDetailData>
+
+        <ModalDetailData data={gender? gender: dimension? dimension: episode}>
+          {gender? 'Gender:': dimension? 'Dimension:': 'Episode:'}
+        </ModalDetailData>
+        
+        {
+          residents || characters ?
+          <div className="modalDetails__moreInfo">
+            <p className="modalDetails__subtitle">
+              {residents? 'Residents' :'Characters'}
+            </p>
+            
+            <Collection 
+                collection={residents?residents: characters} 
+                small/>
+          </div>
+
+          : <ModalDetailData data={species}>Species:</ModalDetailData>
+        }
+      </div>
     </div>
     
   );
