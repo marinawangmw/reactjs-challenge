@@ -3,7 +3,7 @@ import { characters, locations, episodes } from '../data';
 
 // estados
 const initialData = {
-    filterQuery: '',
+    filterQuery: '', 
     collection: [],
     tipo: '',
     name: ''

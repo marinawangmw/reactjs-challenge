@@ -50,8 +50,9 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
                     color='primary' 
                     type='submit'
                     className="searchForm__clearButton"
+                    onClick={clearInput}
                     >
-                        <ClearRoundedIcon onClick={clearInput}/>
+                        <ClearRoundedIcon />
                     </IconButton>
 
                     <TextField className='searchForm__input' onChange={setName} value={name} id="outlined-basic" label="Search by name" variant="outlined" size="small" color='primary'/>

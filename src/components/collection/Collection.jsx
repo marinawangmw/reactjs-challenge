@@ -8,9 +8,9 @@ const Collection = ({ collection }) => {
         <div className='collection'>
             { 
             collection &&
-            collection.map(item => 
+            collection.map(({id, ...otherProps}) => 
                 (
-                    <CardItem key={item.id} item={item} />
+                    <CardItem key={id} {...otherProps} />
                 ))
             } 
         </div>
