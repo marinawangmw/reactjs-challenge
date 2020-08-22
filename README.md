@@ -8,16 +8,16 @@ You can find any interesting information about the show **Rick & Morty** using o
 - Clone the project in order to run it locally by following me with the next steps!
 <br>
 **Ready? Fire!**  🚀
-
-	1.  **Clone** the projct by entering the next command in your `command shell` *(make sure you have git intalled in your computer)* and then press **Enter**
+<br>
+	1)  **Clone** the projct by entering the next command in your `command shell` *(make sure you have git intalled in your computer)* and then press **Enter**
 	
 	     `$ git clone https://github.com/marinawangmw/reactjs-challenge.git `
     
-	2. Step into the folder cloned
+	2) Step into the folder cloned
 
 		`cd reactjs-challenge`
 
-	3. **Start** the project!
+	3) **Start** the project!
 
 		`npm start`
 
