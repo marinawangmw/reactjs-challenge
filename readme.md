@@ -1,7 +1,4 @@
----
 
-
----
 
 <p>Hi there, I’m Marina 👋</p>
 <h1 id="this-is-an-awesome-rick--morty-searcher">This is an awesome Rick &amp; Morty Searcher</h1>
