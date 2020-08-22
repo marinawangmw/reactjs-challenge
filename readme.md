@@ -33,11 +33,11 @@
 </li>
 <li>
 <p><strong>Start</strong> the project with <code>npm start</code><br>
-<img src="./src/assets/npm_start.png" alt="npm start" width="300" ></p>
+<img src="./src/assets/npm_start.png" alt="npm start" width="500" ></p>
 </li>
 <li>
 <p><strong>And it is running~ Easy right?</strong> 😉<br>
-<img src="./src/assets/running_cmd.png" alt="running" width="400"></p>
+<img src="./src/assets/running_cmd.png" alt="running" width="600"></p>
 </li>
 </ol>
 <br>
