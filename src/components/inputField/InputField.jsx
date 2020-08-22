@@ -3,7 +3,6 @@ import './InputField.css'
 
 import { theme } from '../../material-ui-theme';
 import { TextField } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 const InputField = ({ label, handleChange, value, ...otherProps}) => {
