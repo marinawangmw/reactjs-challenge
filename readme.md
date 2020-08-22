@@ -29,14 +29,14 @@
 </li>
 <li>
 <p>Check if you have <a href="https://nodejs.org/en/download/">node</a> installed in your computer with <code>node -v</code><br>
-<img src="./src/assets/node_version_check.png" alt="node version"></p>
+<img src="./src/assets/node_version_check.png" alt="node version" width="100" ></p>
 </li>
 <li>
 <p><strong>Start</strong> the project with <code>npm start</code><br>
-<img src="./src/assets/npm_start.png" alt="npm start"></p>
+<img src="./src/assets/npm_start.png" alt="npm start" width="100" ></p>
 </li>
 <li>
-<p><strong>And it is running~ Easy right?</strong> 😉<img src="./src/assets/running_cmd.png" alt="running"></p>
+<p><strong>And it is running~ Easy right?</strong> 😉<img src="./src/assets/running_cmd.png" alt="running" width="100" ></p>
 </li>
 </ol>
 <br>
@@ -44,16 +44,16 @@
 <p><strong>Sidebar :</strong></p>
 <p>You can find the filters for the search in the sidebar.<br>
 <em>(🐤 A little birdie says try what happens when you click on Rick smiling face)</em></p>
-<p><img src="./src/assets/Searchbox.png" alt="searchbox" width="100" height="250"><br>
+<p><img src="./src/assets/Searchbox.png" alt="searchbox" width="100" ><br>
 <br></p>
 <p><strong>Search box :</strong></p>
 <p>You can search by typing the name or the type (type is only available for characters and locations filters). Search by clicking on the <strong>loop icon</strong> or by hitting <strong>Enter</strong>.</p>
 <p>Clear text entered in the searchbox and all the data you got in previous searches by clicking on the <strong>cross icon</strong>.</p>
-<p><img src="./src/assets/Searchbox.png" alt="search box"><br>
+<p><img src="./src/assets/Searchbox.png" alt="search box" width="100" ><br>
 <br><br>
 <strong>Gallery Section :</strong><br>
 Any results that match the search will be shown in here. Press any card for more detailed information.<br>
-<img src="./src/assets/rick_search_result.png=250x100" alt="gallery"></p>
+<img src="./src/assets/rick_search_result.png" alt="gallery" width="100" ></p>
 <br>
 <p><strong>Have fun!</strong> 🥳</p>
 
