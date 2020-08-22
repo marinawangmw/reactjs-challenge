@@ -13,7 +13,8 @@ const initialData = {
     name: '',
     fetching: false,
     page: 1,
-    totalPages: 0
+    totalPages: 0,
+    error:''
 }
 
 // CONSTANTES
@@ -24,6 +25,7 @@ const LIMPIAR_INPUT = 'LIMPIAR_INPUT';
 const LIMPIAR_COLLECTION = 'LIMPIAR_COLLECTION';
 const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const LIMPIAR_ERROR = 'LIMPIAR_ERROR';
 
 // constantes de estados de get collection from api
 const GET_COLLECTION_PENDING = "GET_COLLECTION_PENDING";
@@ -48,6 +50,8 @@ const reducer = ( state=initialData, action ) => {
             return {...state, totalPages: action.payload}
         case SET_CURRENT_PAGE:
             return {...state, page: action.payload}
+        case LIMPIAR_ERROR:
+            return {...state, error:''}
 
         case GET_COLLECTION_PENDING:
             return {...state, fetching: true}
@@ -165,11 +169,19 @@ export const limpiarInputAction = () => (dispatch, getState) => {
     dispatch({
         type: LIMPIAR_INPUT
     })
+    limpiarErrorAction()(dispatch, getState);
 }
 
 export const limpiarCollectionAction = () => (dispatch, getState) => {
     dispatch({
         type: LIMPIAR_COLLECTION
+    })
+    limpiarErrorAction()(dispatch, getState);
+}
+
+export const limpiarErrorAction = () => (dispatch, getState) => {
+    dispatch({
+        type: LIMPIAR_ERROR
     })
 }
 
@@ -184,7 +196,7 @@ export const setPageAction = (page) => (dispatch, getState) => {
 // cuando toca boton buscar
 export const getCollectionAction = () => (dispatch, getState) => {
     const { filterQuery, filter, page, name, tipo } = getState().searchbox;
-
+    limpiarCollectionAction()(dispatch, getState)
     // manda la query a la api y obtiene los datos
     const query = gql`${filterQuery}`
 
@@ -219,7 +231,6 @@ export const getCollectionAction = () => (dispatch, getState) => {
                 type: GET_COLLECTION_ERROR,
                 payload: error
             })
-            console.log(error)
         })
     
 }

@@ -76,7 +76,7 @@ const SearchForm = ({ name='', tipo='', filter,
                         label="Search by type" 
                         value={tipo}
                         className='searchForm__input' 
-                        disabled={filter=='episodes'}
+                        disabled={filter==='episodes'}
                         id="outlined-basic"  variant="outlined" size="small" color='primary'/>
 
                     <IconButton
