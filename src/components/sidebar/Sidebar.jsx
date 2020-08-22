@@ -29,9 +29,13 @@ const Sidebar = ({ filter='characters', setFilterCharactersAction, setFilterLoca
         }
     }
 
+    function handleLogoClick() {
+        setFilterCharactersAction()
+    }
+
     return (
         <div className="sidebar">
-            <img className='sidebar__logo' src={logo} alt="logo" />
+            <img className='sidebar__logo' src={logo} alt="logo" onClick={handleLogoClick}/>
             <p className="sidebar__title">Filters</p>
             <hr/>
             <BottomNavigation className="sidebar__nav" value={filter} onChange={handleChange} showLabels>
