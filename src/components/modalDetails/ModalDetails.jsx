@@ -2,30 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import ModalDetailData from '../modalDetailData/ModalDetailData';
 import Collection from '../collection/Collection';
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles, getModalStyle } from '../../material-ui-theme';
 import './ModalDetails.css'
-
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 'auto',
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 export default function ModalDetails({ item }) {
 
@@ -38,11 +16,11 @@ export default function ModalDetails({ item }) {
           residents, 
           episode, 
           characters, 
-          created } = item
+          air_date } = item
 
-  const classes = useStyles()
   const [modalStyle] = React.useState(getModalStyle);
-  
+  const classes = useStyles();
+
   return (
     <div style={modalStyle} className={`${classes.paper} modalDetails`} >
 
@@ -57,8 +35,8 @@ export default function ModalDetails({ item }) {
 
       <div className="modalDetails__data">
 
-        <ModalDetailData data={episode? created: type}>
-          {created? 'Release date:': 'Type:' }
+        <ModalDetailData data={episode? air_date: type}>
+          {air_date? 'Release date:': 'Type:' }
         </ModalDetailData>
 
         <ModalDetailData data={gender? gender: dimension? dimension: episode}>

@@ -1,10 +1,10 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import { setFilterCharactersAction } from './searchboxDuck';
+import { setFilterCharactersAction } from './searcherDuck';
 import thunk from 'redux-thunk';
-import searchboxReducer from './searchboxDuck';
+import searcherReducer from './searcherDuck';
 
 const rootReducer = combineReducers({
-    searchbox: searchboxReducer
+    searcher: searcherReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

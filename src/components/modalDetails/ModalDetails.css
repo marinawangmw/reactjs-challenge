@@ -8,6 +8,12 @@
     display: grid;
 }
 
+.modalDetails__name {
+    display: grid !important;
+    align-items: center !important;
+    justify-items: center !important;
+}
+
 .modalDetails__subtitle{
     font-weight: bold;
 }

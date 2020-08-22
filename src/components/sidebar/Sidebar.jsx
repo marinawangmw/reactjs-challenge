@@ -7,7 +7,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { setFilterCharactersAction,
          setFilterLocationsAction,
-         setFilterEpisodesAction } from '../../redux/searchboxDuck';
+         setFilterEpisodesAction } from '../../redux/searcherDuck';
 import { connect } from 'react-redux';
 import './Sidebar.css';
 
@@ -46,7 +46,7 @@ const Sidebar = ({ filter='characters', setFilterCharactersAction, setFilterLoca
 
 function mapStateToProps(state) {
     return {
-        filter: state.searchbox.filter
+        filter: state.searcher.filter
     }
 }
 

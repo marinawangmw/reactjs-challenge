@@ -195,7 +195,7 @@ export const setPageAction = (page) => (dispatch, getState) => {
 
 // cuando toca boton buscar
 export const getCollectionAction = () => (dispatch, getState) => {
-    const { filterQuery, filter, page, name, tipo } = getState().searchbox;
+    const { filterQuery, filter, page, name, tipo } = getState().searcher;
     limpiarCollectionAction()(dispatch, getState)
     // manda la query a la api y obtiene los datos
     const query = gql`${filterQuery}`

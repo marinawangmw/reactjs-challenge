@@ -13,10 +13,12 @@
     display: none;
 }
 
-
-
 .body__pagination {
     margin-bottom: 40px;
+}
+
+.body__progress {
+    color: #00a3a6 !important;
 }
 
 
