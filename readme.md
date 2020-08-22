@@ -37,7 +37,7 @@
 </li>
 <li>
 <p><strong>And it is running~ Easy right?</strong> 😉<br>
-<img src="./src/assets/running_cmd.png" alt="running" width="300"></p>
+<img src="./src/assets/running.png" alt="running" width="300"></p>
 </li>
 </ol>
 <br>
