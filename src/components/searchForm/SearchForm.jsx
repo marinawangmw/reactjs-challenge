@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 import { setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction } from '../../redux/searchboxDuck';
 import './SearchForm.css';
 
-const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction }) => {
+const SearchForm = ({ name='', tipo='', filter,
+                    setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction }) => {
     
     const [disable, setDisable] = useState(false)
 
@@ -35,6 +36,7 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
         limpiarInputAction() 
     }
 
+
     // Desabilitar el boton de buscar si hay menos de 3 caracteres 
     useEffect(() => {
         if(!name && !tipo){
@@ -59,16 +61,31 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
                         <ClearRoundedIcon />
                     </IconButton>
 
-                    <TextField className='searchForm__input' onChange={setName} value={name} id="outlined-basic" label="Search by name" variant="outlined" size="small" color='primary'/>
-                    <TextField className='searchForm__input' onChange={setType} value={tipo} id="outlined-basic" label="Search by type" variant="outlined" size="small" color='primary'/>
+                    <TextField 
+                        onChange={setName}  
+                        label="Search by name" 
+                        value={name}
+                        className='searchForm__input' 
+                        id="outlined-basic" 
+                        variant="outlined" 
+                        size="small" 
+                        color='primary'/>
+
+                    <TextField 
+                        onChange={setType} 
+                        label="Search by type" 
+                        value={tipo}
+                        className='searchForm__input' 
+                        disabled={filter=='episodes'}
+                        id="outlined-basic"  variant="outlined" size="small" color='primary'/>
 
                     <IconButton
-                    disabled={!disable}
-                    variant='contained' 
-                    color='primary' 
-                    type='submit'
-                    className="searchForm__iconButton"
-                    onClick={getCollection}
+                        disabled={!disable}
+                        variant='contained' 
+                        color='primary' 
+                        type='submit'
+                        className="searchForm__iconButton"
+                        onClick={getCollection}
                     >
                         <SearchIcon/>
                     </IconButton>
@@ -81,7 +98,8 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
 
 const mapStateToProps = (state) => ({
     name: state.searchbox.name,
-    tipo: state.searchbox.tipo
+    tipo: state.searchbox.tipo,
+    filter: state.searchbox.filter
 })
 
 export default connect(mapStateToProps,{ setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction })(SearchForm);

@@ -44,7 +44,7 @@
      display: flex !important;
  }
 
-.sidebarnav__button:focus, :active, .Mui-selected{
+.sidebarnav__button:focus, .Mui-selected{
    color: #7aaaaa !important;
 }
 
