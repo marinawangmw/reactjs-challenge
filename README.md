@@ -10,18 +10,18 @@ You can find any interesting information about the show **Rick & Morty** using o
 
 **Ready? Fire!**  🚀
 
-
+<br>
 **Clone** the projct by entering the next command in your `command shell` *(make sure you have git intalled in your computer)* and then press **Enter**
 	
-	 `$ git clone https://github.com/marinawangmw/reactjs-challenge.git `
+`$ git clone https://github.com/marinawangmw/reactjs-challenge.git `
     
 Step into the folder cloned
 
-	`cd reactjs-challenge`
+`cd reactjs-challenge`
 
 **Start** the project!
 
-	`npm start`
+`npm start`
 
 😉 **And it is running~** 
 <br>
