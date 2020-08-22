@@ -1,8 +1,8 @@
 Hi there, I'm Marina 👋
 
 # **This is an awesome Rick & Morty Searcher**
-<hr>
-You can find any interesting information about the show **Rick & Morty** using one of the three filters provided. One for characters, one for locations and another for episodes. Find anything you want by typing in the name or type.
+
+You can find any interesting information about the show **Rick & Morty** using one of the three filters provided. One for characters, one for locations and another for episodes. Find anything you want by typing in the name or type.<br>
 
 **There are two ways you can get to know this app better:** 🌹
 
@@ -14,10 +14,10 @@ You can find any interesting information about the show **Rick & Morty** using o
 
 
 1. clone the projct by using the next command in your command shell (make sure you have git intalled in your computer)
-#### `git clone https://github.com/marinawangmw/reactjs-challenge.git`
+`git clone https://github.com/marinawangmw/reactjs-challenge.git`
 
 2. Press **Enter** to create your local clone
-####`
+`
 $ git clone https://github.com/marinawangmw/reactjs-challenge.git
 > Cloning into `reactjs-challenge`...
 > remote: Counting objects: 10, done.
@@ -27,10 +27,10 @@ $ git clone https://github.com/marinawangmw/reactjs-challenge.git
 `
 
 3. Step into the folder cloned
-####` cd reactjs-challenge`
+` cd reactjs-challenge`
 
 4. **Start** the project!
 
-#### `npm start`
+ `npm start`
 
 And it is running~
