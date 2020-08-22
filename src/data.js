@@ -1,5 +1,4 @@
 export const characters = {
-    
     results:[
         {
             id: 1,

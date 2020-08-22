@@ -1,4 +1,5 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import { setFilterCharactersAction } from './searchboxDuck';
 import thunk from 'redux-thunk';
 import searchboxReducer from './searchboxDuck';
 
@@ -13,6 +14,7 @@ export default function generateStore() {
         rootReducer,
         composeEnhancers(applyMiddleware(thunk))
     )
-    // dispatchers al inicio de la app
+    
+    setFilterCharactersAction()(store.dispatch)
     return store
 }

@@ -3,10 +3,11 @@ import CardItem from '../card/Card';
 import './Collection.css';
 
 const Collection = ({ collection, small }) => {
+    
     return (
         <div className='collection'>
             { 
-            collection &&
+            collection?
             collection
                 .filter((item,idx) => {
                     if(small){
@@ -17,6 +18,7 @@ const Collection = ({ collection, small }) => {
                 .map(item => (
                     <CardItem key={item.id} item={item} small={small}/>
                 ))
+            : console.log('sin datos')
             } 
         </div>
     );

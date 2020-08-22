@@ -56,11 +56,7 @@ const CardItem = ({ item, small }) => {
             >
                 <ModalDetails item={item}/>
             </Modal>
-
-            
-                
-            
-        </div>
+    </div>
   );
 }
 

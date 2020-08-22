@@ -35,3 +35,23 @@
     }
  }
 
+ .sidebar__nav {
+     padding-top: 20px;
+     display: grid !important;
+ }
+
+ .sidebarnav__button {
+     display: flex !important;
+ }
+
+.sidebarnav__button:focus, :active, .Mui-selected{
+   color: #7aaaaa !important;
+}
+
+.sidebarnav__icon {
+    font-size: 2rem !important;
+    padding: 15px;
+}
+
+
+

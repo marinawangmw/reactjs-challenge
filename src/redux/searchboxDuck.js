@@ -1,24 +1,33 @@
-// import ApolloClient, { gql } from 'apollo-boost';
-import { characters, locations, episodes } from '../data'; 
+import ApolloClient, { gql } from 'apollo-boost';
 
-// estados
+let client = new ApolloClient({
+    uri: "https://rickandmortyapi.com/graphql"
+})
+
+// ESTADOS
 const initialData = {
-    filterQuery: '', 
+    filterQuery: '',
+    filter:'', 
     collection: [],
     tipo: '',
-    name: ''
+    name: '',
+    fetching: false,
+    page: 1
 }
 
-// constantes
+// CONSTANTES
 const SET_FILTER = 'SET_FILTER';
-const SET_COLLECTION = 'SET_COLLECTION';
 const SET_NAME = 'SET_NAME';
 const SET_TYPE = 'SET_TYPE';
 const LIMPIAR_INPUT = 'LIMPIAR_INPUT';
+const LIMPIAR_COLLECTION = 'LIMPIAR_COLLECTION'
 
-// Estados de get collection from api
+// constantes de estados de get collection from api
+const GET_COLLECTION_PENDING = "GET_COLLECTION_PENDING"
+const GET_COLLECTION_SUCCESS = "GET_COLLECTION_SUCCESS"
+const GET_COLLECTION_ERROR = "GET_COLLECTION_ERROR"
 
-// reducer
+// REDUCER
 const reducer = ( state=initialData, action ) => {
     switch (action.type) {
         case SET_NAME:
@@ -27,64 +36,108 @@ const reducer = ( state=initialData, action ) => {
             return { ...state, tipo: action.payload}
         
         case SET_FILTER:
-            return {...state, filterQuery: action.payload}
-        case SET_COLLECTION:
-            return {...state, collection: action.payload}
-
+            return {...state, ...action.payload }
         case LIMPIAR_INPUT:
-            return {...state, tipo:'', name:'' }
+            return {...state, tipo:'', name:''}
+        case LIMPIAR_COLLECTION:
+            return {...state, collection:[]}
+
+        case GET_COLLECTION_PENDING:
+            return {...state, fetching: true}
+        case GET_COLLECTION_ERROR:
+            return { ...state, fetching: false, error: action.payload }
+        case GET_COLLECTION_SUCCESS:
+            return { ...state, fetching: false, collection: action.payload }
+
             
         default:
             return action
     }
 }
 
-// actions
+// ACTIONS
 // cuando selecciona filter
 export const setFilterCharactersAction = () => (dispatch, getState) => {
     dispatch({
         type: SET_FILTER,
-        // query character
-        payload: 'characters'
+        payload: { filter: 'characters', filterQuery: `query($name:String,$type:String, $page:Int) {
+            characters(page:$page,filter:{name:$name, type:$type}){
+             info{
+               pages
+               next
+               prev
+             }
+             results{
+               id
+               name
+               type
+               species
+               gender
+               image
+             }
+           }
+         }`}
     })
     limpiarInputAction()(dispatch, getState);
-    // DESPUES BORRAR
-    getCollectionAction(characters) (dispatch, getState)
+    limpiarCollectionAction()(dispatch, getState);
 }
 
 export const setFilterLocationsAction = () => (dispatch, getState) => {
     dispatch({
         type: SET_FILTER,
-        // query locations
-        payload: 'locations'
+        payload: { filter: 'locations', filterQuery: `
+            query($name:String,$type:String, $page:Int) {
+                locations(page:$page,filter:{name:$name, type:$type}){
+                    info{
+                        pages
+                        next
+                        prev
+                    }
+                    results{
+                        id
+                        name
+                        dimension
+                        created
+                        residents{
+                            name
+                            image
+                        }
+                    }
+                }
+            }
+        `}
     })
     limpiarInputAction()(dispatch, getState);
-    // DESPUES BORRAR
-    getCollectionAction(locations) (dispatch, getState)
+    limpiarCollectionAction()(dispatch, getState);
 }
 
 export const setFilterEpisodesAction = () => (dispatch, getState) => {
     dispatch({
         type: SET_FILTER,
-        // query episodes
-        payload: 'episodes'
+        payload: { filter: 'episodes', filterQuery: `query($name:String, $page:Int) {
+            episodes(page:$page,filter:{name:$name}){
+              info{
+                pages
+                next
+                prev
+              }
+              results{
+                id
+                name
+                air_date
+                episode
+                characters{
+                  name
+                  image
+                }
+                created
+              }
+            }
+          }
+        `}
     })
     limpiarInputAction()(dispatch, getState);
-    // DESPUES BORRAR
-    getCollectionAction(episodes) (dispatch, getState)
-}
-
-// cuando toca boton buscar
-export const getCollectionAction = (item) => (dispatch, getState) => {
-    //const { filterQuery } = getState().searchbox;
-    // manda la query a la api y obtiene los datos
-    const items = item.results
-    dispatch({
-        type: SET_COLLECTION,
-        // payload: data.characters.results
-        payload: [...items]
-    })
-    
+    limpiarCollectionAction()(dispatch, getState);
 }
 
 export const setInputNameAction = (name) => (dispatch, getState) => {
@@ -101,10 +154,55 @@ export const setInputTypeAction = (tipo) => (dispatch, getState) => {
     })
 } 
 
-export const limpiarInputAction =() => (dispatch, getState) => {
+export const limpiarInputAction = () => (dispatch, getState) => {
     dispatch({
         type: LIMPIAR_INPUT
     })
+}
+
+export const limpiarCollectionAction = () => (dispatch, getState) => {
+    dispatch({
+        type: LIMPIAR_COLLECTION
+    })
+}
+
+// cuando toca boton buscar
+export const getCollectionAction = () => (dispatch, getState) => {
+    const { filterQuery, filter, page, name, tipo } = getState().searchbox;
+
+    // manda la query a la api y obtiene los datos
+    const query = gql`${filterQuery}`
+
+    dispatch({
+        type: GET_COLLECTION_PENDING,
+    })
+
+    return client.query({
+        query,
+        variables: { name:name.toLowerCase(), type:tipo.toLowerCase(), page:page }
+    })
+        .then(({ data,error }) => {
+            if(error){
+                dispatch({
+                    type: GET_COLLECTION_ERROR,
+                    payload: error
+                })
+                return
+            }
+            dispatch({
+                type: GET_COLLECTION_SUCCESS,
+                payload: data[filter].results
+            })
+
+            // action and dispatch SET NEXTPAGE
+        }).catch(error => {
+            dispatch({
+                type: GET_COLLECTION_ERROR,
+                payload: error
+            })
+            console.log(error)
+        })
+    
 }
 
 export default reducer;

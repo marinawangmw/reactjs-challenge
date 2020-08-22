@@ -81,6 +81,5 @@ export default function ModalDetails({ item }) {
         }
       </div>
     </div>
-    
   );
 }

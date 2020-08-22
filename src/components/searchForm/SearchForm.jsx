@@ -6,17 +6,17 @@ import { TextField } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { connect } from 'react-redux';
-import { setInputNameAction, setInputTypeAction, limpiarInputAction } from '../../redux/searchboxDuck';
+import { setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction } from '../../redux/searchboxDuck';
 import './SearchForm.css';
 
-const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, limpiarInputAction }) => {
+const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction }) => {
     
     const [disable, setDisable] = useState(false)
 
     const theme = createMuiTheme({
         palette: { 
           primary: {
-            main: '#0088cc',
+            main: '#7aaaaa',
           }
         },
       });
@@ -24,6 +24,11 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
     const setName = (event) => { setInputNameAction(event.target.value) }
 
     const setType = (event) => { setInputTypeAction(event.target.value) }
+
+    const getCollection = (event) => { 
+        event.preventDefault()
+        getCollectionAction() 
+    } 
 
     const clearInput = (event) => { 
         event.preventDefault()
@@ -48,7 +53,6 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
                     <IconButton
                     variant='contained' 
                     color='primary' 
-                    type='submit'
                     className="searchForm__clearButton"
                     onClick={clearInput}
                     >
@@ -64,6 +68,7 @@ const SearchForm = ({ name='', tipo='', setInputNameAction, setInputTypeAction, 
                     color='primary' 
                     type='submit'
                     className="searchForm__iconButton"
+                    onClick={getCollection}
                     >
                         <SearchIcon/>
                     </IconButton>
@@ -79,4 +84,4 @@ const mapStateToProps = (state) => ({
     tipo: state.searchbox.tipo
 })
 
-export default connect(mapStateToProps,{ setInputNameAction, setInputTypeAction, limpiarInputAction })(SearchForm);
+export default connect(mapStateToProps,{ setInputNameAction, setInputTypeAction, limpiarInputAction, getCollectionAction })(SearchForm);
