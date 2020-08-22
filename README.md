@@ -6,29 +6,22 @@ You can find any interesting information about the show **Rick & Morty** using o
 
 - Check out the online demo in [here](https://reactjs-challenge-marina.web.app/)
 - Clone the project in order to run it locally by following me with the next steps!
+<br>
 **Ready? Fire!**  🚀
 
-	**1.**  **Clone** the projct by entering the next command in your `command shell` *(make sure you have git intalled in your computer)*
+	1.  **Clone** the projct by entering the next command in your `command shell` *(make sure you have git intalled in your computer)* and then press **Enter**
 	
 	     `$ git clone https://github.com/marinawangmw/reactjs-challenge.git `
+    
+	2. Step into the folder cloned
 
-	**2** Press **Enter** to create your local clone
-	```
-    $ git clone https://github.com/marinawangmw/reactjs-
-challenge.git  
-	Cloning into 'reactjs-challenge'...  
-	remote: Counting objects: 10, done.  
-	remote: Compressing objects: 100% (8/8), done.  
-	remove: Total 10 (delta 1), reused 10 (delta 1)  
-	Unpacking objects: 100% (10/10), done.  
-    ```
-
-	**3** Step into the folder cloned
 		`cd reactjs-challenge`
 
-	**4** **Start** the project!
+	3. **Start** the project!
+
 		`npm start`
+
 		😉 **And it is running~** 
 <br>
----
+
 🕵️‍♀️ **What you can do with this app:** 
