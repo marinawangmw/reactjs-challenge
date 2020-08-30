@@ -71,16 +71,15 @@ interface PaginatorAction {
 
 interface GetDataActionSuccess {
     type: typeof GET_COLLECTION_SUCCESS
-    payload: ResultData[] 
+    payload: ResultData[]
 }
 
-interface GetDataActionWithIssue {
+interface GetDataActionPendingOrError {
     type: typeof GET_COLLECTION_PENDING | typeof GET_COLLECTION_ERROR
     payload: boolean
 }
 
-export type SearcherActionTypes = SetFilterAction | SetInputAction | ClearStateAction | PaginatorAction | GetDataActionSuccess | GetDataActionWithIssue
-
+export type SearcherActionTypes = SetFilterAction | SetInputAction | ClearStateAction | PaginatorAction | GetDataActionSuccess | GetDataActionPendingOrError
 
 export type AppThunk = ActionCreator<
     ThunkAction<void, RootState, null, Action<string>>

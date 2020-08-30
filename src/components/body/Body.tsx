@@ -8,9 +8,7 @@ import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import './Body.css';
 
-
-const Body = () =>  {
-    
+const Body = () =>  {    
     const collection = useSelector(
         (state: RootState) => state.searcher.collection
     )
@@ -25,7 +23,6 @@ const Body = () =>  {
 
     return(
     <div className="body">
-
         <div className="body__header">
             <SearchForm />
         </div> 
@@ -37,12 +34,12 @@ const Body = () =>  {
                       {
                           fetching ? 
                           <CircularProgress className="body__progress"/> 
-                          : <p>'No data found...'</p>
+                          : <p>No data found...</p>
                       }
                     </MessageCard>
                 
-                : // le paso la coleccion pq puede ser llamada desde otro lado
-                 <Collection collection={collection!} />
+                : 
+                    <Collection collection={collection!} />
             } 
         </div>
 

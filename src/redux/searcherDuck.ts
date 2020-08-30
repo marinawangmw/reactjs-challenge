@@ -1,10 +1,10 @@
 import ApolloClient, { gql } from 'apollo-boost';
+import { Reducer } from 'redux';
 import { 
     Filter, AppThunk, 
     SET_FILTER, SET_NAME, SET_TYPE, CLEAR_INPUT, CLEAR_COLLECTION, CLEAR_ERROR, SET_TOTAL_PAGES, SET_CURRENT_PAGE, GET_COLLECTION_PENDING, GET_COLLECTION_SUCCESS, GET_COLLECTION_ERROR,
     SearcherActionTypes, SearcherState
 } from './reduxTypes';
-import { Reducer } from 'redux';
 
 let client = new ApolloClient({
     uri: "https://rickandmortyapi.com/graphql"
@@ -12,7 +12,7 @@ let client = new ApolloClient({
 
 // GraphQL Queries
 const queries = {
-    'characters':  `
+    [Filter.characters]:  `
         query($name:String,$type:String, $page:Int) {
             characters(page:$page,filter:{name:$name, type:$type}){
                 info{
@@ -27,9 +27,9 @@ const queries = {
                     image
                 }
             }
-        }
-    `,
-    'locations': `
+        }`,
+
+    [Filter.locations]: `
         query($name:String,$type:String, $page:Int) {
             locations(page:$page,filter:{name:$name, type:$type}){
                 info{
@@ -45,27 +45,26 @@ const queries = {
                     }
                 }
             }
-        }
-    `,
-    'episodes': `
-    query($name:String, $page:Int) {
-        episodes(page:$page,filter:{name:$name}){
-            info{
-                pages
-            }
-            results{
-                id
-                name
-                air_date
-                episode
-                characters{
-                name
-                image
+        }`,
+
+    [Filter.episodes]: `
+        query($name:String, $page:Int) {
+            episodes(page:$page,filter:{name:$name}){
+                info{
+                    pages
+                }
+                results{
+                    id
+                    name
+                    air_date
+                    episode
+                    characters{
+                    name
+                    image
+                    }
                 }
             }
-        }
-    }
-`
+        }`
 }
 
 // STATES
@@ -112,19 +111,17 @@ const reducer:Reducer<SearcherState> = ( state=initialData, action: SearcherActi
 }
  
 // ACTIONS
-export const setFilterAction: AppThunk = (filterType:string) => (dispatch) => {
-    if( filterType !== undefined) {
-        dispatch({
-            type: SET_FILTER,
-            payload: { filter: filterType, filterQuery: queries[filterType as keyof typeof queries] }
-        })
-    
-        dispatch(clearInputAction());
-    
-        dispatch(clearCollectionAction());
-    
-        dispatch(setPageAction(1));
-    }
+export const setFilterAction: AppThunk = (filterType:Filter) => (dispatch) => {
+    dispatch({
+        type: SET_FILTER,
+        payload: { filter: filterType, filterQuery: queries[filterType as keyof typeof queries] }
+    })
+
+    dispatch(clearInputAction());
+
+    dispatch(clearCollectionAction());
+
+    dispatch(setPageAction(1));
 }
 
 export const setInputNameAction: AppThunk = (inputName:string) => (dispatch) => {
@@ -145,8 +142,6 @@ export const clearInputAction: AppThunk = () => (dispatch) => {
     dispatch({
         type: CLEAR_INPUT
     })
-
-    dispatch(clearErrorAction());
 }
 
 export const clearCollectionAction: AppThunk = () => (dispatch) => {
@@ -186,7 +181,6 @@ export const getCollectionAction: AppThunk = () => (dispatch, getState) => {
         variables: { name:inputName!.toLowerCase(), type:inputType!.toLowerCase(), page:page }
     })
         .then(({ data }) => {
-            
             dispatch({
                 type: GET_COLLECTION_SUCCESS,
                 payload: data[filter!].results

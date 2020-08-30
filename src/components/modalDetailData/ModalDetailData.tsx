@@ -21,7 +21,7 @@ const ModalDetailData: React.FC<ModalDetailDataProps> = ({ children, ...otherPro
                         :'None' 
                     } 
                 </p>
-          </div>
+            </div>
         </div>
     );
 };

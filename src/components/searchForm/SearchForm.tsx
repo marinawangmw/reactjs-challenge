@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SearchForm.css';
 
 const SearchForm = () => {
-    
+    // States
     const filter = useSelector(
         (state: RootState) => state.searcher.filter
     )
@@ -22,22 +22,30 @@ const SearchForm = () => {
         (state: RootState) => state.searcher.inputType
     )
 
+    // Dispatches
     const dispatch = useDispatch();
      
+    const setName = (event: ChangeEvent<HTMLInputElement>) => { 
+        dispatch(setInputNameAction(event.target.value)) 
+    }
+    
+    const setType = (event: ChangeEvent<HTMLInputElement>) => { 
+        dispatch(setInputTypeAction(event.target.value)) 
+    }
+
+    // Disable feature
     const [disable, setDisable] = useState(false)
+
     useEffect(() => {
         if(!inputName && !inputType){
             setDisable(false)
             return
         }
-        setDisable(inputName!.length >2 || inputType!.length > 2)
 
+        setDisable(inputName!.length >2 || inputType!.length > 2)
     },[inputName,inputType])
 
-    // dispatchers
-    const setName = (event: ChangeEvent<HTMLInputElement>) => { dispatch(setInputNameAction(event.target.value)) }
-    const setType = (event: ChangeEvent<HTMLInputElement>) => { dispatch(setInputTypeAction(event.target.value)) }
-
+    // Event Handlers
     const getCollection = (event: React.MouseEvent) => { 
         event.preventDefault()
         dispatch(getCollectionAction());

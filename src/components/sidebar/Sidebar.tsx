@@ -8,6 +8,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { setFilterAction } from '../../redux/searcherDuck';
 import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
+import { Filter } from '../../redux/reduxTypes';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -17,12 +18,12 @@ const Sidebar = () => {
     
     const dispatch = useDispatch();
 
-    function handleChange(event: ChangeEvent<{}>, newValue: string) {
-        dispatch(setFilterAction(newValue));
+    const handleChange = (event: ChangeEvent<{}>, newValue: Filter) => {
+        dispatch(setFilterAction(Filter[newValue]));
     }
 
-    function handleLogoClick() {
-        dispatch(setFilterAction('characters'));
+    const handleLogoClick = () => {
+        dispatch(setFilterAction(Filter.characters));
     }
 
     return (
@@ -31,11 +32,10 @@ const Sidebar = () => {
             <p className="sidebar__title">Filters</p>
             <hr/>
             <BottomNavigation className="sidebar__nav" value={filter} onChange={handleChange} showLabels>
-                <BottomNavigationAction label="Characters" value="characters" icon={<FaceIcon className="sidebarnav__icon"/>}  className="sidebarnav__button" />
-                <BottomNavigationAction label="Locations" value="locations" icon={<RoomIcon className="sidebarnav__icon"/>} className="sidebarnav__button"/>
-                <BottomNavigationAction label="Episodes" value="episodes" icon={<MovieIcon className="sidebarnav__icon"/>} className="sidebarnav__button"/>
+                <BottomNavigationAction label="Characters" value={Filter.characters} icon={<FaceIcon className="sidebarnav__icon"/>}  className="sidebarnav__button" />
+                <BottomNavigationAction label="Locations" value={Filter.locations} icon={<RoomIcon className="sidebarnav__icon"/>} className="sidebarnav__button"/>
+                <BottomNavigationAction label="Episodes" value={Filter.episodes} icon={<MovieIcon className="sidebarnav__icon"/>} className="sidebarnav__button"/>
             </BottomNavigation>
-
         </div>
     );
 };

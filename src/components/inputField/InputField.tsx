@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react';
-import './InputField.css'
 import { theme } from '../../material-ui-theme';
 import { TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
+import './InputField.css'
 
 interface InputFieldProps {
     label: string;
@@ -12,7 +12,6 @@ interface InputFieldProps {
 }
 
 const InputField: React.FC<InputFieldProps> = ({ label, handleChange, value, ...otherProps}) => {
-
     return (
         <div className='inputField'>
         <ThemeProvider theme={theme}>

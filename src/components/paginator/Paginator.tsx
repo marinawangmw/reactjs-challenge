@@ -5,7 +5,6 @@ import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Paginator = () => {
-    
     const totalPages = useSelector(
         (state: RootState) => state.searcher.totalPages
     )

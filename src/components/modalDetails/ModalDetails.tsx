@@ -28,12 +28,11 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
 
   return (
     <div style={modalStyle} className={`${classes.paper} modalDetails`} >
-
       { 
         image &&
           <img className="modalDetails__img" src={image} alt="foto detail"/>
       }
-
+      
       <Typography className="modalDetails__name" variant="h5" component="h6">
           {name}
       </Typography>
