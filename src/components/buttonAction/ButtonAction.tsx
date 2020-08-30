@@ -18,7 +18,6 @@ const ButtonAction: React.FC<ButtonActionPros> = ({ children, handleClick, ...ot
                 <IconButton
                     color='primary' 
                     onClick={handleClick}
-                    component="span"
                     {...otherProps}
                 >
                     {children}

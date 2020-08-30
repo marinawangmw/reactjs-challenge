@@ -54,13 +54,13 @@ const SearchForm = () => {
             <form className='searchForm__form'>
                 <InputField 
                     label="Search by name" 
-                    value={inputName!}
+                    value={inputName? inputName: ''}
                     handleChange={setName} 
                 />
 
                 <InputField 
                     label="Search by type" 
-                    value={inputType!}
+                    value={inputType? inputType: ''}
                     handleChange={setType} 
                     disabled={filter==='episodes'}
                 />
