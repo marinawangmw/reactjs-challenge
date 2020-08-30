@@ -10,7 +10,7 @@ const Paginator = () => {
         (state: RootState) => state.searcher.totalPages
     )
 
-    const page = useSelector(
+    const currentPage = useSelector(
         (state: RootState) => state.searcher.page
     )
 
@@ -23,7 +23,7 @@ const Paginator = () => {
 
     return (
         <div className='paginator'>
-            <Pagination count={totalPages} page={page} shape="rounded" size="large" onChange={handleChangePage}/>
+            <Pagination page={currentPage? currentPage: 1} count={totalPages} shape="rounded" size="large" onChange={handleChangePage}/>
         </div>
     );
 };
