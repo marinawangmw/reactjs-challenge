@@ -1,26 +1,22 @@
-.body{
-    flex:.8;
-    height:100vh;
-    width:100%;
-    background-color: #f1f1f1;
-    overflow-y: overlay;
-    display: grid;
-    align-items: center;
-    justify-items: center;
+.body {
+	flex: 0.8;
+	height: 100vh;
+	width: 100%;
+	background-color: #f1f1f1;
+	overflow-y: overlay;
+	display: grid;
+	align-items: center;
+	justify-items: center;
 }
 
 .body::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .body__pagination {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .body__progress {
-    color: #00a3a6 !important;
+	color: #00a3a6 !important;
 }
-
-
-
- 

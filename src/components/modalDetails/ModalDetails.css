@@ -1,34 +1,34 @@
 .cardwithImage__name {
-    display: grid !important;
-    align-items: center !important;
-    justify-items: center !important;
+	display: grid !important;
+	align-items: center !important;
+	justify-items: center !important;
 }
 
 .modalDetails {
-    display: grid;
-    overflow-y: overlay;
-    max-height: 80%;
+	display: grid;
+	overflow-y: overlay;
+	max-height: 80%;
 }
 
 .modalDetails::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .modalDetails__name {
-    display: grid !important;
-    align-items: center !important;
-    justify-items: center !important; 
-    padding:3px;
+	display: grid !important;
+	align-items: center !important;
+	justify-items: center !important;
+	padding: 3px;
 }
 
-.modalDetails__subtitle{
-    font-weight: bold;
+.modalDetails__subtitle {
+	font-weight: bold;
 }
 
 .modalDetails__moreInfo {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 
 .modalDetails__collection {
-    max-width: 60vw;
+	max-width: 60vw;
 }

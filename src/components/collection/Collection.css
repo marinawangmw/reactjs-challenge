@@ -1,10 +1,10 @@
 .collection {
-    margin: 0px 20px 15px 0px; 
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
+	margin: 0px 20px 15px 0px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .collection__errorMessage {
-    color: grey;
+	color: grey;
 }

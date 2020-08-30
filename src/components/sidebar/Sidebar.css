@@ -1,69 +1,67 @@
-.sidebar{
-    height: 100vh;
-    flex:.2;
-    place-items: center;
-    overflow-y: overlay;
+.sidebar {
+	height: 100vh;
+	flex: 0.2;
+	place-items: center;
+	overflow-y: overlay;
 }
 
 .sidebar::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .sidebar > hr {
-    border: .7px solid rgb(179, 179, 179);
-    width: 50%;
-    margin: 10px auto;
+	border: 0.7px solid rgb(179, 179, 179);
+	width: 50%;
+	margin: 10px auto;
 }
 
 .sidebar__logo {
-    height: 100px;
-    width: 100px;
-    padding: 50px 20px 0px;
+	height: 100px;
+	width: 100px;
+	padding: 50px 20px 0px;
 }
 
 .sidebar__title {
-    font-size: 20px;
-    color: #3e5b5b;
-    font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 20px;
+	color: #3e5b5b;
+	font-family: "Ubuntu Condensed", sans-serif;
 }
 
 @media screen and (max-width: 500px) {
-    .sidebar__logo {
-        height: 60px;
-        width: 60px;
-    }
- }
+	.sidebar__logo {
+		height: 60px;
+		width: 60px;
+	}
+}
 
 @media screen and (max-width: 360px) {
-    .sidebar {
-        width:100px;
-    }
-    .sidebar__logo {
-        height: 50px;
-        width: 50px;
-    }
-    .sidebar__title {
-        font-size: 15px;
-    }
- }
+	.sidebar {
+		width: 100px;
+	}
+	.sidebar__logo {
+		height: 50px;
+		width: 50px;
+	}
+	.sidebar__title {
+		font-size: 15px;
+	}
+}
 
- .sidebar__nav {
-     padding-top: 20px;
-     display: grid !important;
- }
+.sidebar__nav {
+	padding-top: 20px;
+	display: grid !important;
+}
 
- .sidebarnav__button {
-     display: flex !important;
- }
+.sidebarnav__button {
+	display: flex !important;
+}
 
-.sidebarnav__button:focus, .Mui-selected{
-   color: #599bca !important;
+.sidebarnav__button:focus,
+.Mui-selected {
+	color: #599bca !important;
 }
 
 .sidebarnav__icon {
-    font-size: 2rem !important;
-    padding: 15px;
+	font-size: 2rem !important;
+	padding: 15px;
 }
-
-
-

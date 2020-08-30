@@ -1,9 +1,9 @@
 .inputField {
-    padding-right: 10px !important;
+	padding-right: 10px !important;
 }
 
 @media screen and (max-width: 721px) {
-    .inputField{
-        padding:5px !important;
-    }
- }
+	.inputField {
+		padding: 5px !important;
+	}
+}
