@@ -9,13 +9,6 @@ export enum Filter {
     episodes = 'episodes' 
 }
 
-export type ApiResultData = {
-    [key in Filter]: {
-        info: { pages: number };
-        results: ResultData[];
-        } 
-}
-
 // result data got from api
 export interface ResultData {
     id?: number;

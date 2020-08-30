@@ -28,7 +28,7 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
     };
 
     return (
-        <div className='card'> 
+        <div className="card"> 
             <Card className="card__card">
                 <CardContent onClick={handleOpen}>
                 {
@@ -50,10 +50,8 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
                         </Typography>
                     </div>
                 }
-                
                 </CardContent>
             </Card>
-
             <Modal
             open={open}
             onClose={handleClose}

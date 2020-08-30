@@ -2,6 +2,11 @@
     height: 100vh;
     flex:.2;
     place-items: center;
+    overflow-y: overlay;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar > hr {
@@ -21,6 +26,13 @@
     color: #3e5b5b;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
+
+@media screen and (max-width: 500px) {
+    .sidebar__logo {
+        height: 60px;
+        width: 60px;
+    }
+ }
 
 @media screen and (max-width: 360px) {
     .sidebar {

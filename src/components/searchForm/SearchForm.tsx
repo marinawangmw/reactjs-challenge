@@ -3,7 +3,7 @@ import InputField from '../inputField/InputField';
 import ButtonAction from '../buttonAction/ButtonAction';
 import SearchIcon from '@material-ui/icons/Search';
 import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
-import { setInputNameAction, setInputTypeAction, clearInputAction, clearCollectionAction, getCollectionAction } from '../../redux/searcherDuck';
+import { setInputNameAction, setInputTypeAction, clearInputAction, getCollectionAction } from '../../redux/searcherDuck';
 import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import './SearchForm.css';
@@ -46,7 +46,6 @@ const SearchForm = () => {
     const clearInput = (event: React.MouseEvent) => { 
         event.preventDefault()
         dispatch(clearInputAction());
-        dispatch(clearCollectionAction());
     }
 
     return (

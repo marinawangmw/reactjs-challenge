@@ -11,44 +11,43 @@ let client = new ApolloClient({
 })
 
 // GraphQL Queries
-const GET_CHARACTERS_QUERY = `
-    query($name:String,$type:String, $page:Int) {
-        characters(page:$page,filter:{name:$name, type:$type}){
-            info{
-                pages
-            }
-            results{
-                id
-                name
-                type
-                species
-                gender
-                image
-            }
-        }
-    }
-`;
-
-const GET_LOCATIONS_QUERY = `
-    query($name:String,$type:String, $page:Int) {
-        locations(page:$page,filter:{name:$name, type:$type}){
-            info{
-                pages
-            }
-            results{
-                id
-                name
-                dimension
-                residents{
+const queries = {
+    'characters':  `
+        query($name:String,$type:String, $page:Int) {
+            characters(page:$page,filter:{name:$name, type:$type}){
+                info{
+                    pages
+                }
+                results{
+                    id
                     name
+                    type
+                    species
+                    gender
                     image
                 }
             }
         }
-    }
-`;
-
-const GET_EPISODES_QUERY = `
+    `,
+    'locations': `
+        query($name:String,$type:String, $page:Int) {
+            locations(page:$page,filter:{name:$name, type:$type}){
+                info{
+                    pages
+                }
+                results{
+                    id
+                    name
+                    dimension
+                    residents{
+                        name
+                        image
+                    }
+                }
+            }
+        }
+    `,
+    'episodes': `
     query($name:String, $page:Int) {
         episodes(page:$page,filter:{name:$name}){
             info{
@@ -66,7 +65,8 @@ const GET_EPISODES_QUERY = `
             }
         }
     }
-`;
+`
+}
 
 // STATES
 const initialData = {
@@ -112,43 +112,19 @@ const reducer:Reducer<SearcherState> = ( state=initialData, action: SearcherActi
 }
  
 // ACTIONS
-export const setFilterCharactersAction: AppThunk = () => (dispatch) => {
-    dispatch({
-        type: SET_FILTER,
-        payload: { filter: Filter.characters, filterQuery: GET_CHARACTERS_QUERY }
-    })
-
-    dispatch(clearInputAction());
-
-    dispatch(clearCollectionAction());
-
-    dispatch(setPageAction(1));
-}
-
-export const setFilterLocationsAction: AppThunk = () => (dispatch) => {
-    dispatch({
-        type: SET_FILTER,
-        payload: { filter: Filter.locations, filterQuery: GET_LOCATIONS_QUERY }
-    })
-
-    dispatch(clearInputAction());
-
-    dispatch(clearCollectionAction());
-
-    dispatch(setPageAction(1));
-}
-
-export const setFilterEpisodesAction: AppThunk = () => (dispatch) => {
-    dispatch({
-        type: SET_FILTER,
-        payload: { filter: Filter.episodes, filterQuery: GET_EPISODES_QUERY }
-    })
-
-    dispatch(clearInputAction());
-
-    dispatch(clearCollectionAction());
-
-    dispatch(setPageAction(1));
+export const setFilterAction: AppThunk = (filterType:string) => (dispatch) => {
+    if( filterType !== undefined) {
+        dispatch({
+            type: SET_FILTER,
+            payload: { filter: filterType, filterQuery: queries[filterType as keyof typeof queries] }
+        })
+    
+        dispatch(clearInputAction());
+    
+        dispatch(clearCollectionAction());
+    
+        dispatch(setPageAction(1));
+    }
 }
 
 export const setInputNameAction: AppThunk = (inputName:string) => (dispatch) => {

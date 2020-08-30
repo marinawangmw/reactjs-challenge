@@ -5,9 +5,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import MovieIcon from '@material-ui/icons/Movie';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { setFilterCharactersAction,
-         setFilterLocationsAction,
-         setFilterEpisodesAction } from '../../redux/searcherDuck';
+import { setFilterAction } from '../../redux/searcherDuck';
 import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import './Sidebar.css';
@@ -20,23 +18,11 @@ const Sidebar = () => {
     const dispatch = useDispatch();
 
     function handleChange(event: ChangeEvent<{}>, newValue: string) {
-        switch(newValue) {
-            case 'characters':
-                dispatch(setFilterCharactersAction());
-                return
-            case 'locations':
-                dispatch(setFilterLocationsAction());
-                return
-            case 'episodes':
-                dispatch(setFilterEpisodesAction());
-                return
-            default:
-                return
-        }
+        dispatch(setFilterAction(newValue));
     }
 
     function handleLogoClick() {
-        dispatch(setFilterCharactersAction());
+        dispatch(setFilterAction('characters'));
     }
 
     return (
