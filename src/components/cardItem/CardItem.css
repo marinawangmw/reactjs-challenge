@@ -13,8 +13,8 @@
 	padding-top: 5px !important;
 	font-family: "Ubuntu Condensed", sans-serif !important;
 	width: 100% !important;
-	max-width: 170px;
-	height: 50px;
+	max-width: 170px !important;
+	height: 45px !important;
 	display: grid !important;
 	align-items: center !important;
 	justify-items: center !important;
@@ -22,16 +22,18 @@
 
 .card:hover {
 	transition: transform 0.1s ease-in-out;
-	transform: scale(1.02) !important;
+	transform: scale(1.02);
+	cursor: pointer;
 }
 
-.small:hover {
+.noTransition:hover {
 	transition: none !important;
 	transform: none !important;
+	transition-property: none !important;
 }
 
 .small > img {
-	height: 15vh;
+	height: 100px;
 	min-height: 60px;
 	width: auto;
 	padding: 0;

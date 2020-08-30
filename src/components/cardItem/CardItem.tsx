@@ -29,7 +29,7 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
 
 	return (
 		<div className="card">
-			<Card className="card__card">
+			<Card className={`"card__card" ${small && "noTransition"}`}>
 				<CardContent onClick={handleOpen}>
 					{image ? (
 						<div className={`${small && "small"} "card__withImage"`}>
