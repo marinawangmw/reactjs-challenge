@@ -8,7 +8,7 @@ interface MessageCardProps {
 const MessageCard: React.FC<MessageCardProps> = ({ children }) => {
     return (
         <div className='messageCard'>
-            <p> {children} </p>
+            {children}
         </div>
     );
 };

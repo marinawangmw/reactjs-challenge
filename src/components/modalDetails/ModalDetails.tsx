@@ -54,12 +54,12 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
             <p className="modalDetails__subtitle">
               {residents? 'Residents' :'Characters'}
             </p>
-            
-            <Collection 
-                collection={residents?residents!: characters!}
-                small/>
+            <div className="modalDetails__collection">
+              <Collection 
+                  collection={residents?residents!: characters!}
+                  small/>
+              </div>
           </div>
-
           : <ModalDetailData data={species}>Species:</ModalDetailData>
         }
       </div>

@@ -33,11 +33,11 @@ const Body = () =>  {
         <div className="body__container">
             {
                 fetching || error?
-                    <MessageCard>
+                    <MessageCard> 
                       {
                           fetching ? 
                           <CircularProgress className="body__progress"/> 
-                          : 'No data found...'
+                          : <p>'No data found...'</p>
                       }
                     </MessageCard>
                 

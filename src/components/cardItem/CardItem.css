@@ -9,9 +9,14 @@
 }
 
 .cardwithImage__p {
-    font-size: 20px !important;
+    font-size: 1.22em !important;
     padding-top: 5px;
     font-family: 'Ubuntu Condensed', sans-serif !important;
+    width: 100% !important;
+    height: 2.5em !important;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .card__card:hover {
@@ -21,14 +26,22 @@
 
 .small > img {
     height: 15vh;
+    min-height: 60px;
     width: auto;
+    padding: 0;
 }
 
 .small > .cardwithImage__p {
-    font-size: 15px !important;
+    font-size: 1vw !important;
     display: grid;
     align-items: center;
     justify-items: center;
+    width: 100% !important;
+    height: 1.2em !important;
+}
+
+.small {
+    padding:0px !important;
 }
 
  @media screen and (max-width: 360px) {

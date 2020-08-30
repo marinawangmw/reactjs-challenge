@@ -24,7 +24,7 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
       };
     
     const handleClose = () => {
-    setOpen(false);
+        setOpen(false);
     };
 
     return (

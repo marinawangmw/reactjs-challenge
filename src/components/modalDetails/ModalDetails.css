@@ -6,12 +6,18 @@
 
 .modalDetails {
     display: grid;
+    overflow-y: overlay;
+    max-height: 80%;
+}
+
+.modalDetails::-webkit-scrollbar {
+    display: none;
 }
 
 .modalDetails__name {
     display: grid !important;
     align-items: center !important;
-    justify-items: center !important;
+    justify-items: center !important; 
 }
 
 .modalDetails__subtitle{
@@ -20,4 +26,8 @@
 
 .modalDetails__moreInfo {
     padding-top: 10px;
+}
+
+.modalDetails__collection {
+    max-width: 60vw;
 }

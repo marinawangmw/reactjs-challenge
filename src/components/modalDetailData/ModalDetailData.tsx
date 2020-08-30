@@ -7,7 +7,6 @@ interface ModalDetailDataProps {
 }
 
 const ModalDetailData: React.FC<ModalDetailDataProps> = ({ children, ...otherProp }) => {
-    console.log(otherProp)
     return (
         <div>
             <div className="modalDetailData">
