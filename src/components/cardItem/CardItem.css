@@ -1,17 +1,13 @@
 .card {
-	padding: 10px;
+	margin: 10px;
 }
 
-.card:hover {
-	transition: transform 0.1s ease-in-out;
-	transform: scale(1.02);
+.card {
 	cursor: pointer;
 }
 
 .noTransition:hover {
-	transition: none !important;
-	transform: none !important;
-	transition-property: none !important;
+	cursor: auto;
 }
 
 .small > img {
