@@ -2,6 +2,14 @@
 	display: grid;
 	overflow-y: overlay;
 	max-height: 80%;
+	min-width: 22%;
+}
+
+.modalDetails__img {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	width: 100%;
 }
 
 .modalDetails::-webkit-scrollbar {
@@ -12,7 +20,7 @@
 	display: grid !important;
 	align-items: center !important;
 	justify-items: center !important;
-	padding: 5px;
+	padding: 5px !important;
 	max-width: 100vw !important;
 	max-width: 300px !important;
 }
