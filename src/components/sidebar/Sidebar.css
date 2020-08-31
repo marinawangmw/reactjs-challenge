@@ -21,6 +21,10 @@
 	padding: 50px 20px 0px;
 }
 
+.sidebar__logo:hover {
+	cursor: pointer;
+}
+
 .sidebar__title {
 	font-size: 20px;
 	color: #3e5b5b;
