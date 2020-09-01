@@ -48,7 +48,7 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
 								{name}
 							</Typography>
 							<Typography variant="body2" component="p">
-								{dimension ? dimension : episode && episode}
+								{dimension || episode}
 							</Typography>
 						</div>
 					)}
