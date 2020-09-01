@@ -21,7 +21,7 @@ const Paginator = () => {
 	return (
 		<div className="paginator">
 			<Pagination
-				page={currentPage ? currentPage : 1}
+				page={currentPage || 1}
 				count={totalPages}
 				shape="rounded"
 				size="large"
