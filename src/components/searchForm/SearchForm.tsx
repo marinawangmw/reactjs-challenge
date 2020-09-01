@@ -60,13 +60,13 @@ const SearchForm = () => {
 			<form className="searchForm__form">
 				<InputField
 					label="Search by name"
-					value={inputName ? inputName : ""}
+					value={inputName || ""}
 					handleChange={setName}
 				/>
 
 				<InputField
 					label="Search by type"
-					value={inputType ? inputType : ""}
+					value={inputType || ""}
 					handleChange={setType}
 					disabled={filter === "episodes"}
 				/>
