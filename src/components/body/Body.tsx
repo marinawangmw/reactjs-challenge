@@ -24,13 +24,13 @@ const Body = () => {
 			</div>
 
 			<div className="body__container">
-				{fetching || error ? (
+				{fetching ? (
 					<MessageCard>
-						{fetching ? (
-							<CircularProgress className="body__progress" />
-						) : (
-							<p>No data found...</p>
-						)}
+						<CircularProgress className="body__progress" />
+					</MessageCard>
+				) : error ? (
+					<MessageCard>
+						<p>No data found...</p>
 					</MessageCard>
 				) : (
 					<Collection collection={collection!} />
