@@ -26,6 +26,7 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
 
 	const [modalStyle] = React.useState(getModalStyle);
 	const classes = useStyles();
+	const smallCollection = residents || characters;
 
 	return (
 		<div style={modalStyle} className={`${classes.paper} modalDetails`}>
@@ -48,17 +49,19 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
 					{gender ? "Gender:" : dimension ? "Dimension:" : "Episode:"}
 				</ModalDetailData>
 
-				{residents || characters ? (
+				{smallCollection ? (
 					<div className="modalDetails__moreInfo">
 						<p className="modalDetails__subtitle">
 							{residents ? "Residents" : "Characters"}
 						</p>
 
 						<div className="modalDetails__collection">
-							<Collection
-								collection={residents ? residents! : characters!}
-								small
-							/>
+							{smallCollection && (
+								<Collection
+									collection={smallCollection.filter((item, idx) => idx < 5)}
+									small
+								/>
+							)}
 						</div>
 					</div>
 				) : (
