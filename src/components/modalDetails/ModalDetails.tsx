@@ -39,13 +39,11 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
 			</Typography>
 
 			<div className="modalDetails__data">
-				<ModalDetailData data={episode ? air_date : type}>
+				<ModalDetailData data={air_date || type}>
 					{air_date ? "Release date:" : "Type:"}
 				</ModalDetailData>
 
-				<ModalDetailData
-					data={gender ? gender : dimension ? dimension : episode}
-				>
+				<ModalDetailData data={gender || dimension || episode}>
 					{gender ? "Gender:" : dimension ? "Dimension:" : "Episode:"}
 				</ModalDetailData>
 
