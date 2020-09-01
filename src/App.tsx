@@ -6,17 +6,17 @@ import { Filter } from "./redux/reduxTypes";
 import { setFilterAction } from "./redux/searcherDuck";
 
 const App = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setFilterAction(Filter.characters));
-  });
+	useEffect(() => {
+		dispatch(setFilterAction(Filter.characters));
+	}, [dispatch]);
 
-  return (
-    <div className="App">
-      <Homepage />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Homepage />
+		</div>
+	);
 };
 
 export default App;
