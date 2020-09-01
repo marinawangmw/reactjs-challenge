@@ -33,15 +33,15 @@ const SearchForm = () => {
 	};
 
 	// Disable feature
-	const [disable, setDisable] = useState(false);
+	const [enableSearch, setEnableSearch] = useState(false);
 
 	useEffect(() => {
 		if (!inputName && !inputType) {
-			setDisable(false);
+			setEnableSearch(false);
 			return;
 		}
 
-		setDisable(inputName!.length > 2 || inputType!.length > 2);
+		setEnableSearch(inputName!.length > 2 || inputType!.length > 2);
 	}, [inputName, inputType]);
 
 	// Event Handlers
@@ -72,7 +72,7 @@ const SearchForm = () => {
 				/>
 
 				<ButtonAction
-					disabled={!disable}
+					disabled={!enableSearch}
 					type="submit"
 					handleClick={getCollection}
 				>
