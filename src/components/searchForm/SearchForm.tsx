@@ -1,12 +1,15 @@
-import ClearRoundedIcon from "@material-ui/icons/ClearRounded";
+import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+	clearCollectionAction,
 	clearInputAction,
 	getCollectionAction,
 	setInputNameAction,
 	setInputTypeAction,
+	setPageAction,
+	setTotalPagesAction,
 } from "../../redux/searcherDuck";
 import { RootState } from "../../redux/store";
 import ButtonAction from "../buttonAction/ButtonAction";
@@ -15,11 +18,15 @@ import "./SearchForm.css";
 
 const SearchForm = () => {
 	// States
-	const filter = useSelector((state: RootState) => state.searcher.filter);
+	const filter = useSelector((state: RootState) => state.searcher.activeFilter);
 
-	const inputName = useSelector((state: RootState) => state.searcher.inputName);
+	const inputName = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].inputName : ""
+	);
 
-	const inputType = useSelector((state: RootState) => state.searcher.inputType);
+	const inputType = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].inputType : ""
+	);
 
 	// Dispatches
 	const dispatch = useDispatch();
@@ -41,7 +48,13 @@ const SearchForm = () => {
 			return;
 		}
 
-		setEnableSearch(inputName!.length > 2 || inputType!.length > 2);
+		setEnableSearch(
+			inputName
+				? inputName.length > 2
+				: inputType
+				? inputType.length > 2
+				: false
+		);
 	}, [inputName, inputType]);
 
 	// Event Handlers
@@ -50,11 +63,13 @@ const SearchForm = () => {
 		dispatch(getCollectionAction());
 	};
 
-	const clearInput = (event: React.MouseEvent) => {
+	const clearAll = (event: React.MouseEvent) => {
 		event.preventDefault();
 		dispatch(clearInputAction());
+		dispatch(clearCollectionAction());
+		dispatch(setPageAction(1));
+		dispatch(setTotalPagesAction(0));
 	};
-
 	return (
 		<div className="searchForm">
 			<form className="searchForm__form">
@@ -79,8 +94,10 @@ const SearchForm = () => {
 					<SearchIcon />
 				</ButtonAction>
 
-				<ButtonAction handleClick={clearInput}>
-					<ClearRoundedIcon />
+				<ButtonAction handleClick={clearAll}>
+					<Button color="primary" className="searchForm__clearButton">
+						Clear All
+					</Button>
 				</ButtonAction>
 			</form>
 		</div>

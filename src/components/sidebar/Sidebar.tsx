@@ -12,7 +12,7 @@ import { RootState } from "../../redux/store";
 import "./Sidebar.css";
 
 const Sidebar = () => {
-	const filter = useSelector((state: RootState) => state.searcher.filter);
+	const filter = useSelector((state: RootState) => state.searcher.activeFilter);
 
 	const dispatch = useDispatch();
 

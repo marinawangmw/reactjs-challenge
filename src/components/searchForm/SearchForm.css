@@ -1,6 +1,12 @@
 .searchForm__form {
 	display: flex;
 	padding: 20px;
+	align-content: center;
+	justify-items: center;
+}
+
+.searchForm__clearButton {
+	padding: 0 !important;
 }
 
 @media screen and (max-width: 721px) {

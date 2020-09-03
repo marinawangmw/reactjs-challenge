@@ -6,10 +6,10 @@ import {
 	CLEAR_ERROR,
 	CLEAR_INPUT,
 	Filter,
+	FilterState,
 	GET_COLLECTION_ERROR,
 	GET_COLLECTION_PENDING,
 	GET_COLLECTION_SUCCESS,
-	SearcherActionTypes,
 	SearcherState,
 	SET_CURRENT_PAGE,
 	SET_FILTER,
@@ -80,9 +80,7 @@ const queries = {
 };
 
 // STATES
-const initialData: SearcherState = {
-	filterQuery: "",
-	filter: Filter.characters,
+const initialFilterState: FilterState = {
 	collection: [],
 	inputType: "",
 	inputName: "",
@@ -92,111 +90,180 @@ const initialData: SearcherState = {
 	totalPages: 0,
 };
 
+const initialData: SearcherState = {
+	activeFilter: Filter.characters,
+	[Filter.characters]: {
+		...initialFilterState,
+		filterQuery: queries.characters,
+	},
+	[Filter.locations]: {
+		...initialFilterState,
+		filterQuery: queries.locations,
+	},
+	[Filter.episodes]: {
+		...initialFilterState,
+		filterQuery: queries.episodes,
+	},
+};
+
 // REDUCER
-const reducer: Reducer<SearcherState> = (
-	state = initialData,
-	action: SearcherActionTypes
-) => {
+const reducer: Reducer<SearcherState> = (state = initialData, action) => {
 	switch (action.type) {
 		case SET_FILTER:
-			return { ...state, ...action.payload };
 		case SET_NAME:
-			return { ...state, inputName: action.payload };
 		case SET_TYPE:
-			return { ...state, inputType: action.payload };
 		case CLEAR_INPUT:
-			return { ...state, inputType: "", inputName: "" };
 		case CLEAR_COLLECTION:
-			return { ...state, collection: [], totalPages: 0 };
 		case CLEAR_ERROR:
-			return { ...state, error: false };
 		case SET_TOTAL_PAGES:
-			return { ...state, totalPages: action.payload };
 		case SET_CURRENT_PAGE:
-			return { ...state, page: action.payload };
 		case GET_COLLECTION_PENDING:
-			return { ...state, fetching: true };
 		case GET_COLLECTION_SUCCESS:
-			return { ...state, fetching: false, collection: action.payload };
 		case GET_COLLECTION_ERROR:
-			return { ...state, fetching: false, error: action.payload };
+			return { ...state, ...action.payload };
 		default:
 			return action;
 	}
 };
 
 // ACTIONS
-export const setFilterAction: AppThunk = (filterType: Filter) => (dispatch) => {
+export const setFilterAction: AppThunk = (filter: Filter) => (
+	dispatch,
+	getState
+) => {
 	dispatch({
 		type: SET_FILTER,
 		payload: {
-			filter: filterType,
-			filterQuery: queries[filterType as keyof typeof queries],
+			activeFilter: filter,
+			[filter]: {
+				...getState().searcher[filter],
+				filterQuery: queries[filter],
+			},
 		},
 	});
-
-	dispatch(clearInputAction());
-
-	dispatch(clearCollectionAction());
-
-	dispatch(setPageAction(1));
 };
 
 export const setInputNameAction: AppThunk = (inputName: string) => (
-	dispatch
+	dispatch,
+	getState
 ) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: SET_NAME,
-		payload: inputName,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				inputName,
+			},
+		},
 	});
 };
 
 export const setInputTypeAction: AppThunk = (inputType: string) => (
-	dispatch
+	dispatch,
+	getState
 ) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: SET_TYPE,
-		payload: inputType,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				inputType,
+			},
+		},
 	});
 };
 
-export const clearInputAction: AppThunk = () => (dispatch) => {
+export const clearInputAction: AppThunk = () => (dispatch, getState) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: CLEAR_INPUT,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				inputName: "",
+				inputType: "",
+			},
+		},
 	});
 };
 
-export const clearCollectionAction: AppThunk = () => (dispatch) => {
+export const clearCollectionAction: AppThunk = () => (dispatch, getState) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: CLEAR_COLLECTION,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				collection: [],
+			},
+		},
 	});
 
 	dispatch(clearErrorAction());
 };
 
-export const clearErrorAction: AppThunk = () => (dispatch) => {
+export const clearErrorAction: AppThunk = () => (dispatch, getState) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: CLEAR_ERROR,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				error: false,
+				fetching: false,
+			},
+		},
 	});
 };
 
-export const setPageAction: AppThunk = (page: number) => (dispatch) => {
+export const setPageAction: AppThunk = (page: number) => (
+	dispatch,
+	getState
+) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
 	dispatch({
 		type: SET_CURRENT_PAGE,
-		payload: page,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				page,
+			},
+		},
+	});
+};
+
+export const setTotalPagesAction: AppThunk = (pages: number) => (
+	dispatch,
+	getState
+) => {
+	const { activeFilter } = getState().searcher;
+	const activeFilterState = getState().searcher[activeFilter];
+	dispatch({
+		type: SET_TOTAL_PAGES,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				fetching: false,
+				totalPages: pages,
+			},
+		},
 	});
 };
 
 export const getCollectionAction: AppThunk = () => (dispatch, getState) => {
-	const {
-		filterQuery,
-		filter,
-		page,
-		inputName,
-		inputType,
-	} = getState().searcher;
-
-	dispatch(clearCollectionAction());
+	const { activeFilter } = getState().searcher;
+	const { filterQuery, page, inputName, inputType } = getState().searcher[
+		activeFilter
+	];
+	const activeFilterState = getState().searcher[activeFilter];
 
 	const query = gql`
 		${filterQuery}
@@ -204,32 +271,45 @@ export const getCollectionAction: AppThunk = () => (dispatch, getState) => {
 
 	dispatch({
 		type: GET_COLLECTION_PENDING,
+		payload: {
+			[activeFilter]: {
+				...activeFilterState,
+				fetching: true,
+			},
+		},
 	});
 
 	return client
 		.query({
 			query,
 			variables: {
-				name: inputName!.toLowerCase(),
-				type: inputType!.toLowerCase(),
-				page: page,
+				name: inputName ? inputName.toLowerCase() : "",
+				type: inputType ? inputType.toLowerCase() : "",
+				page: page ? page : 1,
 			},
 		})
 		.then(({ data }) => {
 			dispatch({
 				type: GET_COLLECTION_SUCCESS,
-				payload: data[filter!].results,
+				payload: {
+					[activeFilter]: {
+						...activeFilterState,
+						fetching: false,
+						collection: data[activeFilter!].results,
+					},
+				},
 			});
-
-			dispatch({
-				type: SET_TOTAL_PAGES,
-				payload: data[filter!].info.pages,
-			});
+			dispatch(setTotalPagesAction(data[activeFilter!].info.pages));
 		})
 		.catch((error) => {
 			dispatch({
 				type: GET_COLLECTION_ERROR,
-				payload: error,
+				payload: {
+					[activeFilter]: {
+						...activeFilterState,
+						error: true,
+					},
+				},
 			});
 		});
 };

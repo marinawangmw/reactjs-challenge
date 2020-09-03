@@ -1,32 +1,42 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { getModalStyle, useStyles } from "../../material-ui-theme";
-import { ResultData } from "../../redux/reduxTypes";
+import { Characters } from "../../redux/reduxTypes";
 import Collection from "../collection/Collection";
 import ModalDetailData from "../modalDetailData/ModalDetailData";
 import "./ModalDetails.css";
 
 interface ModalDetailsProps {
-	item: ResultData;
+	name: string;
+	type?: string;
+	image?: string;
+	gender?: string;
+	dimension?: string;
+	episode?: string;
+	air_date?: Date;
+	species?: string;
+	residents?: Characters[];
+	characters?: Characters[];
 }
 
-export const ModalDetails: React.FC<ModalDetailsProps> = ({ item }) => {
+export const ModalDetails: React.FC<ModalDetailsProps> = ({ ...props }) => {
 	const {
 		name,
 		image,
-		type,
 		gender,
-		species,
-		dimension,
-		residents,
-		episode,
-		characters,
 		air_date,
-	} = item;
-
+		type,
+		dimension,
+		episode,
+		residents,
+		characters,
+		species,
+	} = props;
 	const [modalStyle] = React.useState(getModalStyle);
 	const classes = useStyles();
+
 	const smallCollection = residents || characters;
+	console.log(smallCollection);
 
 	return (
 		<div style={modalStyle} className={`${classes.paper} modalDetails`}>

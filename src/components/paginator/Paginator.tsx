@@ -5,11 +5,15 @@ import { getCollectionAction, setPageAction } from "../../redux/searcherDuck";
 import { RootState } from "../../redux/store";
 
 const Paginator = () => {
-	const totalPages = useSelector(
-		(state: RootState) => state.searcher.totalPages
+	const filter = useSelector((state: RootState) => state.searcher.activeFilter);
+
+	const totalPages = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].totalPages : 0
 	);
 
-	const currentPage = useSelector((state: RootState) => state.searcher.page);
+	const currentPage = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].page : 1
+	);
 
 	const dispatch = useDispatch();
 
@@ -22,7 +26,7 @@ const Paginator = () => {
 		<div className="paginator">
 			<Pagination
 				page={currentPage || 1}
-				count={totalPages}
+				count={totalPages || 0}
 				shape="rounded"
 				size="large"
 				onChange={handleChangePage}

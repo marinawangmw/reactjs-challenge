@@ -3,18 +3,20 @@ import CardContent from "@material-ui/core/CardContent";
 import Modal from "@material-ui/core/Modal";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { ResultData } from "../../redux/reduxTypes";
 import ModalDetails from "../modalDetails/ModalDetails";
 import "./CardItem.css";
 
 interface CardItemProps {
-	item: ResultData;
+	name: string;
+	image?: string;
+	dimension?: string;
+	episode?: string;
 	small: boolean;
 }
 
-const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
-	const { name, image, dimension, episode } = item;
+const CardItem: React.FC<CardItemProps> = ({ small, ...props }) => {
 	const [open, setOpen] = React.useState(false);
+	const { name, image, dimension, episode } = props;
 
 	const handleOpen = () => {
 		if (!small) {
@@ -60,7 +62,7 @@ const CardItem: React.FC<CardItemProps> = ({ item, small }) => {
 				aria-labelledby="simple-modal-title"
 				aria-describedby="simple-modal-description"
 			>
-				<ModalDetails item={item} />
+				{<ModalDetails {...props} />}
 			</Modal>
 		</div>
 	);

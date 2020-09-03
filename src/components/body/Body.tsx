@@ -9,13 +9,19 @@ import SearchForm from "../searchForm/SearchForm";
 import "./Body.css";
 
 const Body = () => {
-	const collection = useSelector(
-		(state: RootState) => state.searcher.collection
+	const filter = useSelector((state: RootState) => state.searcher.activeFilter);
+
+	const collection = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].collection : []
 	);
 
-	const error = useSelector((state: RootState) => state.searcher.error);
+	const error = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].error : false
+	);
 
-	const fetching = useSelector((state: RootState) => state.searcher.fetching);
+	const fetching = useSelector((state: RootState) =>
+		state.searcher[filter] ? state.searcher[filter].fetching : false
+	);
 
 	return (
 		<div className="body">

@@ -1,10 +1,10 @@
 import React from "react";
-import { ResultData } from "../../redux/reduxTypes";
+import { Data } from "../../redux/reduxTypes";
 import CardItem from "../cardItem/CardItem";
 import "./Collection.css";
 
 interface CollectionProps {
-	collection: ResultData[];
+	collection: Data[];
 	small?: boolean;
 }
 
@@ -14,7 +14,7 @@ const Collection: React.FC<CollectionProps> = ({ collection = [], small }) => (
 			<p className="collection__errorMessage"> None </p>
 		) : (
 			collection.map((item) => (
-				<CardItem key={item.id} item={item} small={small!} />
+				<CardItem key={item.id} small={small || false} {...item} />
 			))
 		)}
 	</div>
