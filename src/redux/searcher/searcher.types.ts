@@ -1,6 +1,6 @@
 import { Action, ActionCreator } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { RootState } from "./store";
+import { RootState } from "../root-reducer";
 
 export enum Filter {
 	characters = "characters",

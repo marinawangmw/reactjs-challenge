@@ -1,7 +1,7 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../redux/root-reducer";
 import Collection from "../collection/Collection";
 import MessageCard from "../messageCard/MessageCard";
 import Paginator from "../paginator/Paginator";

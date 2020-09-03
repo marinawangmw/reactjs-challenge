@@ -1,5 +1,5 @@
 import React from "react";
-import { Data } from "../../redux/reduxTypes";
+import { Data } from "../../redux/searcher/searcher.types";
 import CardItem from "../cardItem/CardItem";
 import "./Collection.css";
 

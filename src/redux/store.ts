@@ -1,28 +1,22 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
-import searcherReducer from "./searcherDuck";
-
-const rootReducer = combineReducers({
-  searcher: searcherReducer,
-});
+import rootReducer from "./root-reducer";
 
 declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
+	interface Window {
+		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+	}
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const generateStore = () => {
-  const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(thunk))
-  );
+	const store = createStore(
+		rootReducer,
+		composeEnhancers(applyMiddleware(thunk))
+	);
 
-  return store;
+	return store;
 };
 
 export default generateStore;
-
-export type RootState = ReturnType<typeof rootReducer>;

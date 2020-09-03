@@ -6,9 +6,9 @@ import RoomIcon from "@material-ui/icons/Room";
 import React, { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/RickAndMorty.png";
-import { Filter } from "../../redux/reduxTypes";
-import { setFilterAction } from "../../redux/searcherDuck";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../redux/root-reducer";
+import { setFilterAction } from "../../redux/searcher/searcher.actions";
+import { Filter } from "../../redux/searcher/searcher.types";
 import "./Sidebar.css";
 
 const Sidebar = () => {

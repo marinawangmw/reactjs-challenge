@@ -1,7 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { getModalStyle, useStyles } from "../../material-ui-theme";
-import { Characters } from "../../redux/reduxTypes";
+import { Characters } from "../../redux/searcher/searcher.types";
 import Collection from "../collection/Collection";
 import ModalDetailData from "../modalDetailData/ModalDetailData";
 import "./ModalDetails.css";

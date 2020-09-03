@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import {
 	clearCollectionAction,
 	clearInputAction,
@@ -10,8 +11,7 @@ import {
 	setInputTypeAction,
 	setPageAction,
 	setTotalPagesAction,
-} from "../../redux/searcherDuck";
-import { RootState } from "../../redux/store";
+} from "../../redux/searcher/searcher.actions";
 import ButtonAction from "../buttonAction/ButtonAction";
 import InputField from "../inputField/InputField";
 import "./SearchForm.css";

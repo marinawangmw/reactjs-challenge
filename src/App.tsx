@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
 import Homepage from "./pages/Home/Homepage";
-import { Filter } from "./redux/reduxTypes";
-import { setFilterAction, setTotalPagesAction } from "./redux/searcherDuck";
+import {
+	setFilterAction,
+	setTotalPagesAction,
+} from "./redux/searcher/searcher.actions";
+import { Filter } from "./redux/searcher/searcher.types";
 
 const App = () => {
 	const dispatch = useDispatch();

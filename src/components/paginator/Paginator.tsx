@@ -1,8 +1,11 @@
 import Pagination from "@material-ui/lab/Pagination";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCollectionAction, setPageAction } from "../../redux/searcherDuck";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../redux/root-reducer";
+import {
+	getCollectionAction,
+	setPageAction,
+} from "../../redux/searcher/searcher.actions";
 
 const Paginator = () => {
 	const filter = useSelector((state: RootState) => state.searcher.activeFilter);
