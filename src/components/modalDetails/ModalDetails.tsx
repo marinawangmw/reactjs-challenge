@@ -36,7 +36,6 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ ...props }) => {
 	const classes = useStyles();
 
 	const smallCollection = residents || characters;
-	console.log(smallCollection);
 
 	return (
 		<div style={modalStyle} className={`${classes.paper} modalDetails`}>

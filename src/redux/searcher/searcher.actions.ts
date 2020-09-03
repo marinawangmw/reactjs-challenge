@@ -189,6 +189,7 @@ export const getCollectionAction: AppThunk = () => (dispatch, getState) => {
 					[activeFilter]: {
 						...getState().searcher[activeFilter],
 						error: true,
+						fetching: false,
 					},
 				},
 			});
