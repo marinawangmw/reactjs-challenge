@@ -59,7 +59,7 @@ export const ModalDetails: React.FC<ModalDetailsProps> = ({ ...props }) => {
 				{smallCollection ? (
 					<div className="modalDetails__moreInfo">
 						<p className="modalDetails__subtitle">
-							{residents ? "Residents" : "Characters"}
+							{residents ? "Residents:" : "Characters:"}
 						</p>
 
 						<div className="modalDetails__collection">

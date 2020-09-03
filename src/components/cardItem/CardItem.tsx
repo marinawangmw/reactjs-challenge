@@ -11,7 +11,7 @@ interface CardItemProps {
 	image?: string;
 	dimension?: string;
 	episode?: string;
-	small: boolean;
+	small?: boolean;
 }
 
 const CardItem: React.FC<CardItemProps> = ({ small, ...props }) => {

@@ -14,7 +14,7 @@ const Collection: React.FC<CollectionProps> = ({ collection = [], small }) => (
 			<p className="collection__errorMessage"> None </p>
 		) : (
 			collection.map((item) => (
-				<CardItem key={item.id} small={small || false} {...item} />
+				<CardItem key={item.id} small={small} {...item} />
 			))
 		)}
 	</div>

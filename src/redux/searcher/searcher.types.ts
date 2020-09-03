@@ -9,11 +9,11 @@ export enum Filter {
 }
 
 export interface Characters {
-	id?: number;
+	id: number;
 	name: string;
-	type?: string;
-	species?: string;
-	gender?: string;
+	type: string;
+	species: string;
+	gender: string;
 	image: string;
 }
 
@@ -37,13 +37,13 @@ export type Data = Characters | Locations | Episodes;
 
 export interface FilterState {
 	filterQuery?: string;
-	collection?: Data[];
+	collection: Data[];
 	inputType: string;
 	inputName: string;
-	fetching?: boolean;
-	error?: boolean;
-	page?: number;
-	totalPages?: number;
+	fetching: boolean;
+	error: boolean;
+	page: number;
+	totalPages: number;
 }
 
 export interface SearcherState {
