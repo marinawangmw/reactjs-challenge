@@ -56,12 +56,7 @@ const CardItem: React.FC<CardItemProps> = ({ small, ...props }) => {
 					)}
 				</CardContent>
 			</Card>
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby="simple-modal-title"
-				aria-describedby="simple-modal-description"
-			>
+			<Modal open={open} onClose={handleClose}>
 				{<ModalDetails {...props} />}
 			</Modal>
 		</div>

@@ -6,7 +6,8 @@
 }
 
 .searchForm__clearButton {
-	padding: 0 !important;
+	padding: 5px 0;
+	font-size: 14px;
 }
 
 @media screen and (max-width: 721px) {

@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -95,9 +94,7 @@ const SearchForm = () => {
 				</ButtonAction>
 
 				<ButtonAction handleClick={clearAll}>
-					<Button color="primary" className="searchForm__clearButton">
-						Clear All
-					</Button>
+					<p className="searchForm__clearButton">CLEAR ALL</p>
 				</ButtonAction>
 			</form>
 		</div>

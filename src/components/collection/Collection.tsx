@@ -1,4 +1,5 @@
 import React from "react";
+import uniqid from "uniqid";
 import { Data } from "../../redux/searcher/searcher.types";
 import CardItem from "../cardItem/CardItem";
 import "./Collection.css";
@@ -13,9 +14,9 @@ const Collection: React.FC<CollectionProps> = ({ collection = [], small }) => (
 		{collection.length >= 1 && !collection[0].name ? (
 			<p className="collection__errorMessage"> None </p>
 		) : (
-			collection.map((item) => (
-				<CardItem key={item.id} small={small} {...item} />
-			))
+			collection.map((item) => {
+				return <CardItem key={uniqid()} small={small} {...item} />;
+			})
 		)}
 	</div>
 );
