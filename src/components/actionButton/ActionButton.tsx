@@ -3,14 +3,14 @@ import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { theme } from "../../material-ui-theme";
 
-interface ButtonActionPros {
+interface ActionButtonPros {
 	children: React.ReactNode;
 	handleClick: (event: React.MouseEvent) => void;
 	disabled?: boolean;
 	type?: string;
 }
 
-const ButtonAction: React.FC<ButtonActionPros> = ({
+const ActionButton: React.FC<ActionButtonPros> = ({
 	children,
 	handleClick,
 	...otherProps
@@ -26,4 +26,4 @@ const ButtonAction: React.FC<ButtonActionPros> = ({
 	);
 };
 
-export default ButtonAction;
+export default ActionButton;

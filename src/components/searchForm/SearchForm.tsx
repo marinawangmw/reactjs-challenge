@@ -11,7 +11,7 @@ import {
 	setPageAction,
 	setTotalPagesAction,
 } from "../../redux/searcher/searcher.actions";
-import ButtonAction from "../buttonAction/ButtonAction";
+import ActionButton from "../actionButton/ActionButton";
 import InputField from "../inputField/InputField";
 import "./SearchForm.css";
 
@@ -85,17 +85,17 @@ const SearchForm = () => {
 					disabled={filter === "episodes"}
 				/>
 
-				<ButtonAction
+				<ActionButton
 					disabled={!enableSearch}
 					type="submit"
 					handleClick={getCollection}
 				>
 					<SearchIcon />
-				</ButtonAction>
+				</ActionButton>
 
-				<ButtonAction handleClick={clearAll}>
+				<ActionButton handleClick={clearAll}>
 					<p className="searchForm__clearButton">CLEAR ALL</p>
-				</ButtonAction>
+				</ActionButton>
 			</form>
 		</div>
 	);
