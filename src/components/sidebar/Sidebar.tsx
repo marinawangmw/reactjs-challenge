@@ -5,7 +5,7 @@ import MovieIcon from "@material-ui/icons/Movie";
 import RoomIcon from "@material-ui/icons/Room";
 import React, { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../assets/RickAndMorty.png";
+import logo from "../../assets/rick_and_morty.png";
 import { RootState } from "../../redux/root-reducer";
 import { setFilterAction } from "../../redux/searcher/searcher.actions";
 import { Filter } from "../../redux/searcher/searcher.types";

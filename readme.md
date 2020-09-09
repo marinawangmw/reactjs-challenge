@@ -1,5 +1,3 @@
-
-
 <p>Hi there, I’m Marina 👋</p>
 <h1 id="this-is-an-awesome-rick--morty-searcher">This is an awesome Rick &amp; Morty Searcher</h1>
 <p>You can find any interesting information about the show <strong>Rick &amp; Morty</strong> using one of the three filters provided. One for characters, one for locations and another for episodes. Find anything you want by typing in the name or type.</p>
@@ -47,11 +45,10 @@
 <p><strong>Search box :</strong></p>
 <p>You can search by typing the name or the type (type is only available for characters and locations filters). Search by clicking on the <strong>loop icon</strong> or by hitting <strong>Enter</strong>.</p>
 <p>Clear text entered in the searchbox and all the data you got in previous searches by clicking on the <strong>cross icon</strong>.</p>
-<p><img src="./src/assets/Searchbox.png" alt="search box" width="300" ><br>
+<p><img src="./src/assets/search_box.png" alt="search box" width="300" ><br>
 <br><br>
 <strong>Gallery Section :</strong><br>
 Any results that match the search will be shown in here. Press any card for more detailed information.<br>
 <img src="./src/assets/rick_search_result.png" alt="gallery" width="400" ></p>
 <br>
 <p><strong>Have fun!</strong> 🥳</p>
-
