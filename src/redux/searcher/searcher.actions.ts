@@ -166,7 +166,7 @@ export const getCollectionAction: AppThunk = () => (dispatch, getState) => {
 			variables: {
 				name: inputName ? inputName.toLowerCase() : "",
 				type: inputType ? inputType.toLowerCase() : "",
-				page: page ? page : 1,
+				page: page || 1,
 			},
 		})
 		.then(({ data }) => {

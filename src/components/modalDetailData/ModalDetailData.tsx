@@ -15,7 +15,7 @@ const ModalDetailData: React.FC<ModalDetailDataProps> = ({
 			<div className="modalDetailData">
 				<p className="modalDetailData__subtitle">{children} &#160;</p>
 
-				<p className="modalDetailData__detail">{data ? data : "None"}</p>
+				<p className="modalDetailData__detail">{data || "None"}</p>
 			</div>
 		</div>
 	);
