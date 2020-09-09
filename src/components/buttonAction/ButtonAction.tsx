@@ -2,7 +2,6 @@ import { IconButton } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { theme } from "../../material-ui-theme";
-import "./ButtonAction.css";
 
 interface ButtonActionPros {
 	children: React.ReactNode;
